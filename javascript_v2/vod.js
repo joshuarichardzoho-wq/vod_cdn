@@ -2823,7 +2823,9 @@ vodDemo =
 
         const vodPlayer = viewerPage.find('#'+playerId).addClass('rtcpmediaplayerdiv');
         vodPlayer.empty();
-        vodPlayer.append(this.getPlayerSpinner());
+
+        const spinner = this.getPlayerSpinner().addClass('vod-player-spinner-center');
+        vodPlayer.append(spinner);
 
         const viewerLHS = viewerPage.find('.rtcp-vod-viewerpage-lhs');
         $(window).off('.vod_viewer');
@@ -2834,6 +2836,7 @@ vodDemo =
             {
                 bindCustomEvents ()
                 {
+                    vodPlayer.find('.vod-player-spinner-center').remove();
                     vodStudio.displayChapters();
 
                     const videoElem = this._videoInstance;
@@ -2875,7 +2878,7 @@ vodDemo =
                 }
             }
 
-            vodPlayer.removeClass('rtcpmediaplayerdiv').children().remove();
+            //vodPlayer.removeClass('rtcpmediaplayerdiv').children().remove();
             vodStudio.initVodPlayer(playerId, undefined, customEvents);
         }
 
