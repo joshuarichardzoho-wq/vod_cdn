@@ -6883,6 +6883,7 @@ RTCMediaPlayerObj.prototype.hidePlayerControls = function()
 	var elem = $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-video-cont');
 
 	console.log(!hideControlsOnPause, "!hideControlsOnPause");
+	console.log(this._videoInstance.paused, "this._videoInstance.paused");
 	console.log(this.isPaused(), "this.isPaused()");
 	if ((!hideControlsOnPause && this.isPaused()) || $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-playbackspee-options').hasClass('selected') || $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-setting-view').hasClass('selected')) 
 	{
