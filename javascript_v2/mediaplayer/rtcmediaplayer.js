@@ -766,6 +766,7 @@ RTCMediaPlayerObj.prototype.load = function (confkey, vodkey, pbtoken, wssurls)
 
 RTCMediaPlayerObj.prototype.playContent = function(vodKey, pbToken, wssUrl, viewerId)
 {
+	console.log("playcontent")
 	if(!vodKey || !pbToken || !wssUrl || !viewerId)
 	{
 		return;
