@@ -2879,6 +2879,7 @@ vodDemo =
             }
 
             //vodPlayer.removeClass('rtcpmediaplayerdiv').children().remove();
+            console.log('open viewer page Initializing VOD Player');
             vodStudio.initVodPlayer(playerId, undefined, customEvents);
         }
 

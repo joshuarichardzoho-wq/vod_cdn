@@ -272,6 +272,7 @@ class ZRVODViewer
 
     initVodPlayer (playerDivId, playerConfig = {}, customPlayerEvents = {})
     {
+        console.log("Initializing VOD Player");
         if(typeof playerDivId !== 'string' || !playerDivId.trim()) // " " not valid 
         {
             return;
