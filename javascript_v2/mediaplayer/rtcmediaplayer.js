@@ -2843,6 +2843,7 @@ RTCMediaPlayerObj.prototype.bindVideoTagDurationEvent = function ()
 		{
 			$('[mediaplayerid="' + this.mediaPlayerDiv + '"] .rtcp-mp-time-duration').html(this.getFormatedTime(this._videoInstance.duration));
 		}
+		console.log('', 'durationchange event called');
 		this.bindDurationAndEvents();
 	}.bind(this)
 	
@@ -3151,6 +3152,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 	}
 	if (!this.getDuration() && this.isEventsLoaded) 
 	{
+		console.log('Duration is set for the first time and events are loaded');
 		this.showPlayerControls();
 		//$('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider-handle').css("left", this._videoInstance.volume * ($('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider').width() - $('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider-handle').width()));
 		$('#' + this.mediaPlayerDiv + ' .rtcp-mp-volume-slider-handle').css("left", this._videoInstance.volume * (70 - 12));
@@ -6853,6 +6855,7 @@ RTCMediaPlayerObj.prototype.getRecordingId = function()
 
 RTCMediaPlayerObj.prototype.showPlayerControls = function()
 {
+	console.log("showPlayerControls called");
 	var elem = $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-video-cont');
 
 	if(elem.hasClass("rtcp-mp-videoHover"))
