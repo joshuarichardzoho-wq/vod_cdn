@@ -645,7 +645,6 @@ var RTCMediaPlayerObj= function(mediaPlayerDiv)
 	this.customEventData;
 	this.customEventKey;
 	this.customData = undefined;
-	this._autoplayFailed = false;
 	this.downloadTimeThreshold = 500; 
 	this.wssDomainIndex = 0;
 	this.wssDomains = [];
@@ -915,10 +914,8 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 			{
 //				$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').show();
 				this.setSpinner();
-				this._autoplayFailed = true;
 				this._videoInstance.play().then(
 						(success) => {
-							this._autoplayFailed = false;
 //							$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 							this.setSpinner();
 							$('#' + this.mediaPlayerDiv + ' .rtcmediaplayervideo').css("object-fit","contain");
@@ -999,10 +996,10 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 				{
 //					$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').show();
 					this.setSpinner();
-					this._autoplayFailed = true;
+					console.log('4', this._videoInstance.paused);
 					this._videoInstance.play().then(
 							(success) => {
-								this._autoplayFailed = false;
+								console.log('5', this._videoInstance.paused);
 //								$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 								this.setSpinner();
 								$('#' + this.mediaPlayerDiv + ' .rtcmediaplayervideo').css("object-fit","contain");
@@ -1019,10 +1016,13 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').addClass('dN');
 							},
 							(failure) => {
+								console.log('6', this._videoInstance.paused);
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').removeClass('dN');
 //								$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 								this.setSpinner();
+								console.log('7', this._videoInstance.paused);
 								this.bindVideoTagEvents();
+								console.log('8', this._videoInstance.paused);
 								if(this._config.AV == "audio"){
 									$('#'+this.mediaPlayerDiv+' [rtcpmpbutton][purpose="pause"]').attr("purpose","autoplaystart");
 									$('#'+this.mediaPlayerDiv+' [rtcpmpbutton][purpose="play"]').attr("purpose","autoplaystart");
@@ -1030,6 +1030,7 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 									elem.attr('tooltip-title', RTCPMediaPlayerResource.getRealValue("rtcpmediaplayer.tooltip.play")+" (k)");
 									elem.find('.rtcp-mp-button').removeClass("rtcmp-icon-mp-pause").addClass("rtcmp-icon-mp-play");
 								}
+								console.log('9', this._videoInstance.paused);
 								this.UIonPause();
 								$('#'+this.mediaPlayerDiv+' [rtcpmpbutton][purpose="play"]').attr("purpose","autoplaystart");
 							});
@@ -2203,7 +2204,6 @@ RTCMediaPlayerObj.prototype.getDefaultPlaybackModule = function ()
 
 RTCMediaPlayerObj.prototype.autoplaystart  = function ()
 {
-	this._autoplayFailed = false;
 	if(this.view == RTCMediaPlayerConstants.MINIPLAYER)
 	{
 		$('#' + this.miniPlayerDiv + ' .rtcp-mp-video-pause-state').addClass('dN');
@@ -2525,7 +2525,7 @@ RTCMediaPlayerObj.prototype.bindVideoOnHover = function () {
 		}
 		mediaPlayerInstance.showPlayerControls();
 		mediaPlayerInstance.hoverTimerId = setTimeout(function (mediaPlayerInstance) {
-			mediaPlayerInstance.hidePlayerControls();
+        mediaPlayerInstance.hidePlayerControls();
 		}, 4000, mediaPlayerInstance)
 	})
 
@@ -2533,7 +2533,7 @@ RTCMediaPlayerObj.prototype.bindVideoOnHover = function () {
 		var mediaPlayerInstance = event.data;
 		var elem = $('[mediaplayerid="' + mediaPlayerInstance.mediaPlayerDiv +'"] .rtcp-mp-video-cont');
 
-		if (mediaPlayerInstance._autoplayFailed || mediaPlayerInstance.isPaused() || $('[mediaplayerid="' + mediaPlayerInstance.mediaPlayerDiv +'"] .rtcp-mp-playbackspee-options').hasClass('selected') || $('[mediaplayerid="' + mediaPlayerInstance.mediaPlayerDiv +'"] .rtcp-mp-setting-view').hasClass('selected'))
+		if (mediaPlayerInstance.isPaused() || $('[mediaplayerid="' + mediaPlayerInstance.mediaPlayerDiv +'"] .rtcp-mp-playbackspee-options').hasClass('selected') || $('[mediaplayerid="' + mediaPlayerInstance.mediaPlayerDiv +'"] .rtcp-mp-setting-view').hasClass('selected'))
 		{
 			return;
 		}
@@ -2849,6 +2849,7 @@ RTCMediaPlayerObj.prototype.bindVideoTagDurationEvent = function ()
 		{
 			$('[mediaplayerid="' + this.mediaPlayerDiv + '"] .rtcp-mp-time-duration').html(this.getFormatedTime(this._videoInstance.duration));
 		}
+		console.log('1', this._videoInstance.paused);
 		this.bindDurationAndEvents();
 	}.bind(this)
 	
@@ -2936,6 +2937,8 @@ RTCMediaPlayerObj.prototype.bindVideoTagEvents = function ()
 	}
 	
 	this._videoInstance.ontimeupdate = function () {
+		
+		console.log('11', this._videoInstance.paused);
 		this.bindDurationAndEvents();
 		if (this.mode != RTCMediaPlayerConstants.mode.LIVESTREAMING)
 		{
@@ -3157,6 +3160,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 	}
 	if (!this.getDuration() && this.isEventsLoaded) 
 	{
+		console.log('2', this._videoInstance.paused);
 		this.showPlayerControls();
 		//$('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider-handle').css("left", this._videoInstance.volume * ($('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider').width() - $('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider-handle').width()));
 		$('#' + this.mediaPlayerDiv + ' .rtcp-mp-volume-slider-handle').css("left", this._videoInstance.volume * (70 - 12));
@@ -3184,6 +3188,8 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 				this.showAnnotation(RTCMediaPlayerConstants.category.BOOKMARKS, true);
 			}
 		}
+
+		console.log('3', this._videoInstance.paused);
 		this.hidePlayerControls();
 		return;
 	}
@@ -6875,13 +6881,6 @@ RTCMediaPlayerObj.prototype.hidePlayerControls = function()
 	var elem = $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-video-cont');
 
 	if ((!hideControlsOnPause && this.isPaused()) || $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-playbackspee-options').hasClass('selected') || $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-setting-view').hasClass('selected')) 
-	{
-		return;
-	}
-
-	// Safari: autoplay failure reports paused=false even though video never played.
-	// Use explicit flag to keep controls visible until user starts playback.
-	if(this._autoplayFailed)
 	{
 		return;
 	}
