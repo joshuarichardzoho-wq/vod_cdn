@@ -21,7 +21,7 @@
          var _CFPARAMNAME 	= "rtcplatform_csrparam";    		
          var _CFTOKEN 		= "f6f8ba70e2493e74e2bb308f2f46ca1c5f5f41c4d8a1bd7dd4e70534794745e959591ada35e67ef26cc972e44924158ea1b61b6f0a8c896db06d7aa62dce6d05";                                  
          var _CFCOOKIENAME = "RTCPLATFORM_CSRF_TOKEN";
-         var latest_ver = '63809e8716e5f55d9f7e1ff3748a6ccad4a657a6';
+         var latest_ver = 'a9251b30191c216060faa8b5bb093358d9c41f33';
 </script>
 
 	<script src="https://static.zohocdn.com/rtcplatform/js/tp.min.1c6b888013be5e98bc709ff986360ca2.js" integrity="" crossorigin="anonymous"></script>
@@ -61,19 +61,26 @@
 <!-- wms common client components js imports -->
 <script src="https://static.zohocdn.com/rtcplatform/js/components.min.860777ad94c69af7411d9802f13a1fd7.js" integrity="" crossorigin="anonymous"></script>
 
-	<script src="https://static.zohocdn.com/rtcplatform/js/mediaplayer.min.ac26410a2bc4d9b9e84ee73ad7a0a2a2.js" integrity="" crossorigin="anonymous"></script>
-	<script src="https://static.zohocdn.com/rtcplatform/js/website.min.fa6df6ae645d781afd4e7fc6b2b0b1cd.js" integrity="" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/mediaplayer/hls.minjs"></script>
+<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/util/overridejs"></script>
+<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/util/rtcptemplatejs"></script>
+<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/recording/recordingjs"></script>
+<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/eventsjs"></script>
+<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/mediaplayer/rtcmediaplayerjs"></script>
+<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/mediaplayer/rtcmediaplayertemplatesjs"></script>
+	
+  <script src="https://static.zohocdn.com/rtcplatform/js/website.min.fa6df6ae645d781afd4e7fc6b2b0b1cd.js" integrity="" crossorigin="anonymous"></script>
 <!-- <script src="https://static.zohocdn.com/rtcplatform/js/vod.min.daa67ecd7fbde5525cd9d7221120530d.js" integrity="" crossorigin="anonymous"></script> -->
       
-      <script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@63809e8716e5f55d9f7e1ff3748a6ccad4a657a6/javascript_v2/vodtemplate.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/vodtemplate.js"></script>
       
-      <script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@63809e8716e5f55d9f7e1ff3748a6ccad4a657a6/javascript_v2/vodHandler.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/vodHandler.js"></script>
       
-      <script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@63809e8716e5f55d9f7e1ff3748a6ccad4a657a6/javascript_v2/vod.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/vod.js"></script>
       
-      <script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@63809e8716e5f55d9f7e1ff3748a6ccad4a657a6/javascript_v2/voddemosorter.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/voddemosorter.js"></script>
       
-<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@63809e8716e5f55d9f7e1ff3748a6ccad4a657a6/javascript_v2/zrvod.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/javascript_v2/zrvod.js"></script>
 
 	<link type="text/css" rel="stylesheet" href="https://static.zohocdn.com/rtcplatform/css/website/website.min.99346554b2d3e92c0653c3202886596e.css" integrity="" crossorigin="anonymous">
 	<link type="text/css" rel="stylesheet" href="https://static.zohocdn.com/rtcplatform/css/mediaplayer.min.ec780feac9cda85326e32d18e4feff5b.css" integrity="" crossorigin="anonymous">
@@ -99,7 +106,7 @@
     	 var link1 = document.createElement('link');
          link1.rel = "stylesheet";
          link1.type = "text/css";
-         link1.href = "https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@63809e8716e5f55d9f7e1ff3748a6ccad4a657a6/style_v2/landingpage/vod.css";
+         link1.href = "https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@a9251b30191c216060faa8b5bb093358d9c41f33/style_v2/landingpage/vod.css";
          link1.integrity = "";
          link1.setAttribute("crossorigin", "anonymous");
          document.head.appendChild(link1);
