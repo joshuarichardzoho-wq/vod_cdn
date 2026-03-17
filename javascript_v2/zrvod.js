@@ -313,6 +313,7 @@ class ZRVODViewer
         {
             Object.assign(config, this._mediaPlayerObj.configs);
             mediaPlayer.setPlayerConfig(config);
+            console.log("playerCallback");
             mediaPlayer.playContent(this._contentKey, this._pbToken, this._wssUrl, this._userId);
         }
 
