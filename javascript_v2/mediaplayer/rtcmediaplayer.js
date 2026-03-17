@@ -742,6 +742,7 @@ RTCMediaPlayerObj.prototype.loadUrl = function (url)
 		{
 			this.wssurl = domain.origin;
 		}
+		console.log("Loading url 1: ");
 		this.loadHls(this._config.hls == "enable");
 	}
 }
@@ -786,6 +787,7 @@ RTCMediaPlayerObj.prototype.playContent = function(vodKey, pbToken, wssUrl, view
 	url.searchParams.set("pop", this.isPopEnabled() ? "1" : "0");
 
 	this.url = url.href;
+	console.log("Loading url 2: ");
 	this.loadHls(this._config.hls == "enable");
 }
 
@@ -1165,6 +1167,7 @@ RTCMediaPlayerObj.prototype.getWSSSidForRec = function (pbtoken, wssurl)
 		{
 			this.x_stateless_auth = x_stateless_auth;
 		}
+		console.log("Loading url 3: ");
 		this.loadHls(this._config.hls == "enable");
 	}.bind(this)
 	RTCPRecording.getWSSSidForRec(this.confKey, this.vodKey, pbtoken, wssurl, this.isPopEnabled(), successCallBack, undefined, this.handleAjaxTimeout())
@@ -1178,6 +1181,7 @@ RTCMediaPlayerObj.prototype.getWSSSidForStreaming = function ()
 		}
 		this.url = this.wssurl + '/wsrtcp/master?sid=' + wsssid;
 		this.setSid(wsssid);
+		console.log("Loading url 4: ");
 		this.loadHls(this._config.hls == "enable");
 	}.bind(this)
 
