@@ -915,8 +915,10 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 			{
 //				$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').show();
 				this.setSpinner();
+				this._autoplayFailed = true;
 				this._videoInstance.play().then(
 						(success) => {
+							this._autoplayFailed = false;
 //							$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 							this.setSpinner();
 							$('#' + this.mediaPlayerDiv + ' .rtcmediaplayervideo').css("object-fit","contain");
@@ -924,7 +926,6 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 							this.onPlay();
 						},
 						(failure) => {
-							this._autoplayFailed = true;
 							$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').removeClass('dN');
 							if(this._config.AV == "audio"){
 								$('#'+this.mediaPlayerDiv+' [rtcpmpbutton][purpose="pause"]').attr("purpose","autoplaystart");
@@ -998,8 +999,10 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 				{
 //					$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').show();
 					this.setSpinner();
+					this._autoplayFailed = true;
 					this._videoInstance.play().then(
 							(success) => {
+								this._autoplayFailed = false;
 //								$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 								this.setSpinner();
 								$('#' + this.mediaPlayerDiv + ' .rtcmediaplayervideo').css("object-fit","contain");
@@ -1016,7 +1019,6 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').addClass('dN');
 							},
 							(failure) => {
-								this._autoplayFailed = true;
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').removeClass('dN');
 //								$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 								this.setSpinner();
