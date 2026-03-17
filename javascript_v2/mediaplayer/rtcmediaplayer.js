@@ -1014,11 +1014,13 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').addClass('dN');
 							},
 							(failure) => {
-								console.log("Autoplay failed _start", failure);
+								console.log("1", this._videoInstance.paused)
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').removeClass('dN');
 //								$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 								this.setSpinner();
+								console.log("2", this._videoInstance.paused)
 								this.bindVideoTagEvents();
+								console.log("3", this._videoInstance.paused)
 								if(this._config.AV == "audio"){
 									$('#'+this.mediaPlayerDiv+' [rtcpmpbutton][purpose="pause"]').attr("purpose","autoplaystart");
 									$('#'+this.mediaPlayerDiv+' [rtcpmpbutton][purpose="play"]').attr("purpose","autoplaystart");
@@ -1026,9 +1028,10 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 									elem.attr('tooltip-title', RTCPMediaPlayerResource.getRealValue("rtcpmediaplayer.tooltip.play")+" (k)");
 									elem.find('.rtcp-mp-button').removeClass("rtcmp-icon-mp-pause").addClass("rtcmp-icon-mp-play");
 								}
+								console.log("4", this._videoInstance.paused)
 								this.UIonPause();
+								console.log("5", this._videoInstance.paused)
 								$('#'+this.mediaPlayerDiv+' [rtcpmpbutton][purpose="play"]').attr("purpose","autoplaystart");
-								console.log("Autoplay failed _end", failure);
 							});
 				}
 				else
