@@ -846,6 +846,7 @@ RTCMediaPlayerObj.prototype.getCustomData = function()
 }
 RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 {
+	console.log("Loading HLS : " + isHls);
 	//if (Hls.isSupported()) {
 		if(this._config.AV == "audio")
 		{
@@ -976,6 +977,7 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 
 			var attachMediaCallBack = function () 
 			{
+				console.log("Media element attached");
 				if(this._config.autoStartLoad === "disable")
 				{
 					this._videoInstance.addEventListener("play", function() {
