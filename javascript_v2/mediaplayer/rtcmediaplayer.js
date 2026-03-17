@@ -1122,9 +1122,11 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 		}
 		//this.startTimerToGetCurrentTime();
 		
+		console.log('13', this._videoInstance.paused);
 		this.bindVideoControls();
 		/*this.bindEventsControl();*/
 		this.bindEvents();
+		console.log('14', this._videoInstance.paused);
 		this.bindVideoTagDurationEvent();
 		//$('#' + this.mediaPlayerDiv + ' .rtcpmediaplayerdiv').focus();
 		this.focusPlayer();
