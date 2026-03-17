@@ -2519,7 +2519,9 @@ RTCMediaPlayerObj.prototype.bindVideoOnHover = function () {
 		}
 		mediaPlayerInstance.showPlayerControls();
 		mediaPlayerInstance.hoverTimerId = setTimeout(function (mediaPlayerInstance) {
-        mediaPlayerInstance.hidePlayerControls();
+        
+			console.log('1')
+			mediaPlayerInstance.hidePlayerControls();
 		}, 4000, mediaPlayerInstance)
 	})
 
@@ -3116,6 +3118,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 			this.isInitialised = true
 			this.showPlayerControls();
 			$('#' + this.mediaPlayerDiv + ' .rtcp-mp-volume-slider-handle').css("left", this._videoInstance.volume * (70 - 12));
+			console.log('2')
 			this.hidePlayerControls();
 		}
 		return;
@@ -3135,6 +3138,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 				this.getEventsObj().sortTimeIndexList(this);
 			}
 			this.appendContainerHtml();
+			console.log('3')
 			this.hidePlayerControls();
 			return;
 		}
@@ -3146,6 +3150,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 			//$('#' + this.mediaPlayerDiv + ' .rtcp-mp-chapter-container, #' + this.mediaPlayerDiv + ' .rtcp-mp-chapter-button').css("display", "none");
 			$('#' + this.mediaPlayerDiv + ' .rtcmediaplayerchapter').attr("et", this._videoInstance.duration);
 			this.appendContainerHtml();
+			console.log('4')
 			this.hidePlayerControls();
 			return;
 		}
@@ -3181,6 +3186,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 				this.showAnnotation(RTCMediaPlayerConstants.category.BOOKMARKS, true);
 			}
 		}
+		console.log('5')
 		this.hidePlayerControls();
 		return;
 	}
@@ -3198,6 +3204,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 			$('#' + this.mediaPlayerDiv + ' .rtcp-mp-setting-mainview .rtc-mp-bookmark-setting').addClass('rtcp-mp-bookmark-active');
 			this.showAnnotation(RTCMediaPlayerConstants.category.BOOKMARKS, true);
 		}
+		console.log('6')
 		this.hidePlayerControls();
 	}
 }
@@ -6869,6 +6876,7 @@ RTCMediaPlayerObj.prototype.showPlayerControls = function()
 
 RTCMediaPlayerObj.prototype.hidePlayerControls = function()
 {
+	console.log("hidePlayerControls called");
 	var hideControlsOnPause = this._config.hideControlsOnPause === "enable";
 	var elem = $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-video-cont');
 
