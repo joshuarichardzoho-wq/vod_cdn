@@ -6880,6 +6880,8 @@ RTCMediaPlayerObj.prototype.hidePlayerControls = function()
 	var hideControlsOnPause = this._config.hideControlsOnPause === "enable";
 	var elem = $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-video-cont');
 
+	console.log(!hideControlsOnPause, "!hideControlsOnPause");
+	console.log(this.isPaused(), "this.isPaused()");
 	if ((!hideControlsOnPause && this.isPaused()) || $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-playbackspee-options').hasClass('selected') || $('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcp-mp-setting-view').hasClass('selected')) 
 	{
 		return;
@@ -6890,7 +6892,6 @@ RTCMediaPlayerObj.prototype.hidePlayerControls = function()
 		return;
 	}
 
-	console.log("hidePlayerControls called");
 	elem.removeClass("rtcp-mp-videoHover");
 }
 
