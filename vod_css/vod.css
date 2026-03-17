@@ -1,0 +1,5725 @@
+/*$Id$*/
+* { box-sizing:border-box;}
+html { height: 100%;}
+body{ margin: 0 auto; height: 100%; overflow: hidden;}
+body, textarea, span { font-family: "Zoho_Puvi", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif; }
+.dN { display: none !important;}
+.curP { cursor: pointer; }
+
+textarea {
+  background: var(--background-40);
+  border : 1px solid var(--border-color-11);
+  overflow: hidden;
+  color: var(--font-color-1);
+  opacity: 0.8;
+}
+
+textarea:focus-visible {
+  background: var(--background-41);
+  border : 1px solid var(--border-color-12);
+  overflow-y: scroll;
+  opacity: 1;
+}
+
+@font-face {
+  font-family: 'zchat';
+  src:  url('../../styles_v2/fonts/landingpage/vod/vod.eot');
+  src:  url('../../styles_v2/fonts/landingpage/vod/vod.eot') format('embedded-opentype'),
+    url('../../styles_v2/fonts/landingpage/vod/vod.ttf') format('truetype'),
+    url('../../styles_v2/fonts/landingpage/vod/vod.woff') format('woff'),
+    url('../../styles_v2/fonts/landingpage/vod/vod.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="rtcp-demo-vod-icon"]:before, [class*="rtcp-demo-vod-icon"]:before, [class^="web-vod-rtcp-"]:before, [class*="web-vod-rtcp-"]:before {
+  font-family:'zchat';
+  font-weight:normal;
+  font-style: normal;
+  font-size:1em;
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+.rtcp-vod-homepage {width: 100%; height: 100%;}
+
+.rtcp-vod-homepage.night-mode {
+  --background-1 : linear-gradient(2deg, #0d0d13, #0f0f16, #1c1c28);
+  --background-2: #24212e;
+  --background-3 : rgb(91 95 100 / 50%);
+  --background-4 : #302f2f;
+  --baclground-5 : rgb(115 119 123);
+  --baclground-6 : #454545;
+  --background-7 : #4a5666;
+  --background-8 : rgb(122 127 133 / 50%);
+  --background-9 : #535B63;
+  --background-10 : rgb(130 135 141 / 25%);
+  --background-11 : #04040780;
+  --background-12 : #131f21;
+  --background-13 : #3a4d4d8c;
+  --background-14 : linear-gradient(100deg, #353136, #19191d, #303031);
+  --background-15 : #121118c2;
+  --background-16: rgb(67 99 157 / 60%);
+  --background-17 : #5a4064;
+  --background-18 : #f1c40f;
+  --background-19 : #27232f;
+  --background-20 : #393e4c;
+  --background-21: #7261af;
+  --background-22: #7a5be8;
+  --background-23 : rgb(37 37 51 / 95%);
+  --background-24: #3b3b43;
+  --background-25 : #1f385e;
+  --background-26: #395785;
+  --background-27 : rgba(255, 255, 255, 0.25);
+  --background-28: #484c53;
+  --background-29: #377dff;
+  --background-30 : #616170;
+  --background-31 : #27273a;
+  --background-32 : linear-gradient(1deg, #181827 0%, #191a25 50%, #151a24 100%);
+  --background-33 : linear-gradient(242deg, #c2c2ff75, #7f7f9375, #80c6ae54);
+  --background-34 : #312046;
+  --background-35 : rgb(60 53 66 / 8%);
+  --background-36 : linear-gradient(90deg, #2f2e31 6%, #3e3c3f 70%, #2b2727 117%);
+  --background-37 : #171e23;
+  --background-38 : linear-gradient(to right, #38393f52, #38393fde, #38393f);
+  --background-39 : rgb(27 27 30 / 73%);
+  --background-40 : #1e1e21;
+  --background-41 : #151319;
+  --background-42 : #3c3b3b;
+  --background-43 : linear-gradient(0deg, #161620, #181823, #161621);
+  --background-44 : linear-gradient(0deg, #3d2e45 0%, #292936 100%);
+  --background-45 : #34394a;
+  --background-46 : #40465c;
+  
+  --border-color-1 : rgb(79 81 84 / 50%);
+  --border-color-2 : #262728;
+  --border-color-3 : var(--border-color-1);
+  --border-color-4 : rgb(89 90 91 / 40%);
+  --border-color-5 : #444242;
+  --border-color-6 : 1px solid #4573c8;
+  --border-color-7 : rgb(55 125 255);
+  --border-color-8: #dfc2c20a;
+  --border-color-9: #36777817;
+  --border-color-10 : #6c6b7d2e;
+  --border-color-11 : rgb(79 81 84 / 67%);
+  --border-color-12 : #377dff8a;
+  --border-color-13 : #4f4d4df7;
+  
+  --font-color-1 : #f1f1f1;
+  --font-color-2: #c4c2c2;
+  --font-color-3: #fff;
+  --font-color-4: #9f9f9f;
+  --font-color-5: #d5d4d4;
+  --font-color-6: rgb(167 176 202);
+  --font-color-7: rgb(141 142 144 / 75%);
+  --font-color-8: #e2e2e2; 
+  --font-color-9: #d3d3e4;
+  --font-color-10: #7e7e9f;
+  --font-color-11: #7c8394;
+  --font-color-12: #b6b6b6;
+  --font-color-13 : #c9c8c8;
+  --font-color-14: rgb(128 128 144);
+  --font-color-15: #fafafa;
+  --font-color-16: rgb(231 226 226 / 95%);
+  --font-color-17 : rgb(240 240 240);
+  --font-color-18 : rgba(255, 255, 255, 0.7);
+  --font-color-19 : #ede6e6b0;
+  --font-color-20 : #a2b2de9c;
+  --font-color-21 : #a2b2de;
+
+  --box-shadow-1 : rgb(0 0 0 / 22%) 0px 0px 0.25em, rgb(22 32 51 / 20%) 0px 0.25em 1em;
+  --box-shadow-2 : inset -5px 0px 0 0px #f39c12;
+  --box-shadow-3 : 0 2px 4px rgb(0 0 0 / 55%);
+  --box-shadow-4 : 0 0px 0px rgb(0 0 0 / 0%), 0 2px 1px rgb(0 0 0 / 7%);
+  --box-shadow-5 : 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;
+
+  --box-shadow-7: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  --box-shadow-8: rgba(133, 147, 151, 0.16) 0px 44px 0px -42px;
+  --box-shadow-9 : 0 2px 13px rgb(0 0 0 / 55%);
+  --box-shadow-10 : 0 2px 5px rgb(0 0 0 / 29%);
+
+  --scrollbar-color-1 : #555 transparent;
+}
+
+.rtcp-vod-homepage {
+  --background-1 : #FFF;
+  --background-2 : var(--background-1);
+  --background-3 : rgba(231, 235, 240, 0.5);
+  --background-4 : #F8F9FB;
+  --baclground-5 : rgba(231, 235, 240, 1);
+  --background-6 : #F6F6F6;
+  --background-7 : #EEF5FF;
+  --background-8 : rgba(231, 235, 240, 1);
+  --background-9 : #E7EBF0;
+  --background-10 : rgba(231, 235, 240, 0.25);
+  --background-11 : rgba(248, 249, 251, 0.60);
+  --background-12 : var(--background-1);
+  --background-13 : #F5F6F6;
+  --background-14 : var(--background-1);
+  --background-15 : #F8F9FB;
+  --background-16 : rgba(55, 125, 255, 0.10);
+  --background-17 : var(--background-1);
+  --background-18 : #95a5a6;
+  --background-19 : linear-gradient(165deg, #c0e3ed, #f6f6f6);
+  --background-20 : #e5e2e2;
+  --background-21 : rgb(255 255 255);
+  --background-22 : var(--background-1);
+  --background-23 : var(--background-1);
+  --background-24 : var(--background-1);
+  --background-25: #e4e4f8;
+  --background-26: #aa6bffed;
+  --background-27 : rgb(120 100 128 / 28%);
+  --background-28: #e5e6e7;
+  --background-29 : var(--background-27);
+  --background-30 : #656afff0;
+  --background-31 : #f0e7e738;
+  --background-32: linear-gradient(176deg, #ffffff, #faf6ff, #ffffff);
+  --background-32: #ffffff;
+  --background-33 : linear-gradient(242deg, #c2c2ffd6, #8680c69e, #8680c6a3, #8680c6bd);
+  --background-34: #422a62;
+  --background-35 : var(--background-32);
+  --background-36 : linear-gradient(90deg, #f2f1f1 6%, #edeaea 70%, #f7f3f3 117%);
+  --background-37 : #2c3336;
+  
+  --background-39 : rgb(0 0 0 / 30%);
+  --background-40 : #fbfafacc;
+  --background-41 : var(--background-1);
+  --background-42 : var(--background-1);
+  --background-43 : var(--background-1);
+  --background-44 : linear-gradient(181deg, #211d5ebd 0%, #3730a385 100%);
+  --background-45 : #818cf8;
+  --background-46 : #9cadf0;
+
+  --border-color-1 : #E7EBF0;
+  --border-color-2 : var(--border-color-1);
+  --border-color-3 : rgba(167, 181, 209, 0.40);
+  --border-color-4 : rgba(200, 209, 221, 0.40);
+  --border-color-5 : #E7EBF0;
+  --border-color-6 : 1px solid #377DFF;
+  --border-color-7 : #74acf2;
+  --border-color-8 : #dfc2c282;
+  --border-color-9 : #0000001f;
+  --border-color-10 :#00000012;
+  --border-color-11 : rgb(231, 235, 240);
+  --border-color-12 : #377DFF;
+  --border-color-13 : #E7EBF0;
+  --border-color-14: #d6d9dd;
+
+  --font-color-1 : #000;
+  --font-color-2: #606060;
+  --font-color-3: var(--font-color-1);
+  --font-color-4: #333;
+  --font-color-5: #3d424f;
+  --font-color-6: rgba(84, 90, 106);
+  --font-color-7: rgba(84, 90, 106, 0.75);
+  --font-color-8: #656565;
+  --font-color-9: #2A2A4B;
+  --font-color-10: #3F3F60;
+  --font-color-11: #545A6A;
+  --font-color-12: var(--font-color-1);
+  --font-color-13: var(--font-color-1);
+  --font-color-14: rgba(42, 42, 75, 0.50);
+  --font-color-15: #377DFF;
+  --font-color-16 : #646a9f;
+  --font-color-17 : #fff;
+  --font-color-18 : #454141;
+  --font-color-19 : #000000b0;
+  --font-color-20 : rgb(84 90 106 / 75%);
+  --font-color-21 : #545A6A;
+
+  /* --box-shadow-1 : rgb(67 71 85 / 22%) 0px 0px 0.25em, rgb(90 125 188 / 20%) 0px 0.25em 1em; */
+  --box-shadow-1 : rgb(67 71 85 / 22%) 0px 0px 0.25em, rgb(90 125 188 / 16%) 0px 0.20em 0em;
+  --box-shadow-2 : inset 5px 0px 0 0px #7f8c8d;
+  --box-shadow-3 : 0 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-4 : 0 0px 0px rgb(0 0 0 / 0%), 0 5px 6px rgb(0 0 0 / 6%);
+  --box-shadow-5 : 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 1px 3px 0 #0000001a, 0 1px 2px 2px #0000001a;
+  --box-shadow-6: 0 0px 0px rgb(0 0 0 / 0%), 0 0px 1px rgb(0 0 0 / 29%);
+  --box-shadow-7: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  --box-shadow-8: rgba(133, 147, 151, 0.16) 0px 46px 0px -42px;
+  --box-shadow-9 : 0 8px 16px rgba(0, 0, 0, 7%);
+  --box-shadow-10 : var(--box-shadow-9);
+
+  --icon-content: '\e929';
+
+  --scrollbar-color-1 : var(--background-27) transparent;
+}
+
+.rtcp-vod-homepage {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: var(--background-1);
+  color: var(--font-color-1);
+  --upload_percentage : 0%;
+  /* transition: background 0.3s ease; */
+}
+
+.rtcp-vod-homepage.night-mode {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+} 
+
+.rtcp-vod-homepage:has(.rtcp-demo-vod-studio-modal), .rtcp-vod-homepage:has(.rtcp-demo-vod-upload-dialog) {
+  overflow: unset;
+}
+
+body {background: var(--background-1);}
+
+.rtcp-vod-homepage .vod-hide {
+  display: none;
+}
+
+.rtcp-vod-homepage ::-webkit-scrollbar{
+  width: 0;
+}
+
+.rtcp-vod-homepage .center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rtcp-vod-homepage .ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rtcp-vod-homepage img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+[tooltip-title]:hover:after {
+  content: attr(tooltip-title) !important;
+  position: absolute;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  line-height: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  background: #000;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  text-align: center;
+  z-index: 10;
+}
+
+.rtcp-vod-homepage .rtcp-vod-topheader{
+  border-bottom: 1px solid var(--border-color-1);
+  background: var(--background-23);
+  /* transition: background 0.3s ease; */
+  height: 48px;
+  padding: 8px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+.rtcp-vod-homepage .rtcp-vod-topheader-titlesec{
+  justify-content: flex-start;
+  flex: 1;
+  gap: 10px;
+}
+.rtcp-vod-homepage .rtcp-vod-topheader-rhs{
+  justify-content: flex-end;
+  gap: 32px;
+}
+
+.rtcp-vod-homepage .rtcp-demopage-topheader-rhs{
+  gap: 10px;
+}
+
+.rtcp-vod-homepage .user-profile{
+  width: 32px;
+  height: 32px;
+}
+
+.rtcp-vod-homepage .user-profile img{
+  width: 32px;
+  height: 32px;
+  border-radius: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+.rtcp-vod-homepage .rtcp-vod-topheader-logo{
+  gap: 8px;
+  cursor: pointer;
+}
+.rtcp-vod-homepage .rtcp-vod-topheader-logo img{
+  width: 24px;
+}
+.rtcp-vod-homepage .rtcp-vod-topheader-logo span {
+  color: var(--font-color-1);
+  font-size: 18px;
+  line-height: 24px;
+}
+.rtcp-vod-homepage .rtcp-vod-container{
+  padding: 24px 32px 0;
+  overflow: hidden;
+}
+
+.rtcp-vod-homepage .rtcp-vod-body{
+  position: relative;
+}
+
+.rtcp-vod-tab-container{
+  display: flex;
+  justify-content: space-between;
+  /* border-bottom: 1px solid var(--border-color-3); */
+  border-radius: 5px;
+  align-items: anchor-center;
+}
+
+.rtcp-vod-upload-btn {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  border-radius: 20px;
+  background: #377DFF;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  height:40px;
+}
+
+.upload-disabled .rtcp-vod-upload-btn {
+  display: none;
+}
+
+.rtcp-vod-homepage .rtcp-vod-tabheader{
+  justify-content: flex-start;
+  position: relative;
+  border-bottom: 2px solid var(--border-color-3);
+}
+.rtcp-vod-homepage .rtcp-vod-tab{
+  padding: 0 24px;
+  position: relative;
+  font-weight: 500;
+  color: var(--font-color-2);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 50px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  /* overflow: hidden; */
+}
+.active.rtcp-vod-tab{
+  color: var(--font-color-3);
+  background: var(--background-31);
+}
+
+.rtcp-vod-homepage .rtcp-vod-tab-active-bar{
+  border-bottom: 3px solid #3975EA;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -17px;
+  width: 97px;
+  z-index: 1;
+  /* transition: all 0.3s ease; */
+  bottom: -1;
+}
+
+.rtcp-vod-homepage .short-width.active.rtcp-vod-tab:after {width: 10%;}
+
+.rtcp-vod-homepage .width-low-to-high.active.rtcp-vod-tab:after{
+  animation: width-low-to-high 0.6s ease forwards;
+}
+
+@keyframes width-low-to-high {
+  0% { width: 100%; }
+  50% {width: 20%;}
+  75% { width: 80%;}
+  100% {left: -98%; width: 80%;}
+}
+
+.rtcp-vod-homepage .active.rtcp-vod-tab:after{
+  width: 100%;
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-box .rtcp-grid-video-box-wrapper{
+  border-radius: 10px;
+  border: 1px solid var(--border-color-9);
+  background: var(--background-2);
+  position: relative;
+  width: 100%;
+  height: 180px;
+  cursor: pointer;
+  /* top: 0px;  */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-3);
+}
+
+.rtcp-vod-container .rtcp-grid-video-box:hover .rtcp-grid-video-box-wrapper{
+  transform: translateY(-4px);
+  box-shadow: var(--box-shadow-9);
+}
+
+.rtcp-vod-viewerpage-outercontainer .rtcp-grid-video-box {
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 16px;
+  transition: transform 0.3s ease;
+}
+
+.rtcp-vod-viewerpage-outercontainer .rtcp-grid-video-box img {
+  transition: transform 0.3s ease;
+}
+
+.rtcp-vod-viewerpage-outercontainer .rtcp-grid-video-box:hover, .rtcp-vod-viewerpage-outercontainer .rtcp-grid-video-box:hover img {
+  /* transform: scale(1.02); */
+  transform: scale(1.025);
+  /* background : #1e2123; */
+}
+
+.rtcp-vod-viewerpage-outercontainer .rtcp-grid-video-box .rtcp-grid-video-box-wrapper {
+  transition: unset;
+  box-shadow: unset;
+}
+
+.rtcp-vod-bg-outer 
+{
+    border-radius: 10px;
+    position: relative;
+    background-position: center;
+    background-size: cover !important;
+    aspect-ratio: 16 / 9;
+    background-color: rgba(255, 255, 255);
+    /* border: 2px solid #FFF; */
+    padding: 18px 15px;
+    /* align-items: flex-start !important; */
+    background: #F6F6F6;
+}
+.rtcp-vod-bg-outer-wrap
+{
+  padding-top:25px;
+  padding-bottom: 77px;
+}
+.rtcp-vod-active-line { 
+  position: absolute;
+  bottom: 0;
+  left: 32px;
+  height: 3px;
+  width: 0;
+  top:72px;
+  background-color: #3975EA;
+  transition: all 0.3s ease;
+  min-width: 10px;
+}
+.rtcp-vod-loader-outer
+{
+  position: relative;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.rtcp-vod-loader {
+  border: 5px solid #000; /* Light grey */
+  border-top: 5px solid #ede8e8; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 0.7s linear infinite;
+  position:absolute;
+  /* top:50%;*/
+  /* left: 25%; */
+  z-index: 100;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.rtcp-vod-homepage .rtcp-home-videobg[type="BROADCASTING"]{
+  position: relative;
+  background-image: url('../../images/landingpage/broadcasting.svg');
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  width: 64px;
+  height: 64px;
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-box[media-source="BROADCASTING"]:hover .rtcp-home-videobg[type="BROADCASTING"]{
+  background-image: url('../../images/landingpage/broadcasting-hover.svg');
+}
+
+.rtcp-vod-homepage .rtcp-home-videobg[type="LIVEEVENT"]{
+  position: relative;
+  background-image: url('../../images/landingpage/live-events.svg');
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  width: 64px;
+  height: 64px;
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-box[media-source="LIVEEVENT"]:hover .rtcp-home-videobg[type="LIVEEVENT"]{
+  background-image: url('../../images/landingpage/live-events-hover.svg');
+}
+
+.rtcp-vod-homepage .rtcp-home-videobg[type="CONFERENCE"],.rtcp-vod-homepage .rtcp-home-videobg[type="RTCPDEMO"]{
+  position: relative;
+  background-image: url('../../images/landingpage/video.svg');
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  width: 64px;
+  height: 64px;
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-box[media-source="CONFERENCE"]:hover .rtcp-home-videobg[type="CONFERENCE"], .rtcp-vod-homepage .rtcp-grid-video-box[media-source="RTCPDEMO"]:hover .rtcp-home-videobg[type="RTCPDEMO"]{
+  background-image: url('../../images/landingpage/video-hover.svg');
+}
+
+.rtcp-vod-homepage .rtcp-home-videobg[type="UPLOAD"]{
+  position: relative;
+  background-image: url('../../images/landingpage/myvideos.svg');
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  width: 64px;
+  height: 64px;
+}
+.rtcp-vod-homepage .rtcp-grid-video-box[media-source="UPLOAD"]:hover  .rtcp-home-videobg[type="UPLOAD"]{
+  background-image: url('../../images/landingpage/myvideoshover.svg');
+}
+.rtcp-vod-homepage .rtcp-grid-video[type="CONFERENCE"]{
+  background-image: url('../../images/landingpage/video.svg');
+  position: relative;
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px 10px 0 0;
+  width: 64px;
+  height: 64px;
+}
+
+.rtcp-vod-homepage .rtcp-vod-viewerpage-nextvideos[media-source="CONFERENCE"]:hover .rtcp-grid-video[type="CONFERENCE"]{
+  background-image: url('../../images/landingpage/video-hover.svg');
+}
+
+.rtcp-vod-homepage .rtcp-grid-video[type="BROADCASTING"]{
+  background-image: url('../../images/landingpage/broadcasting.svg');
+  position: relative;
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px 10px 0 0;
+  width: 64px;
+  height: 64px;
+}
+.rtcp-vod-homepage .rtcp-vod-viewerpage-nextvideos[media-source="BROADCASTING"]:hover .rtcp-grid-video[type="BROADCASTING"]{
+  background-image: url('../../images/landingpage/broadcasting-hover.svg');
+}
+.rtcp-vod-homepage .rtcp-grid-video[type="LIVEEVENT"]{
+  background-image: url('../../images/landingpage/live-events.svg');
+  position: relative;
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px 10px 0 0;
+  width: 64px;
+  height: 64px;
+}
+
+rtcp-vod-homepage .rtcp-vod-viewerpage-nextvideos[media-source="LIVEEVENT"]:hover .rtcp-grid-video[type="LIVEEVENT"]{
+  background-image: url('../../images/landingpage/live-events-hover.svg');
+}
+
+.rtcp-vod-homepage .rtcp-grid-video[type="UPLOAD"]{
+  background-image: url('../../images/landingpage/myvideos.svg');
+  position: relative;
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px 10px 0 0;
+  width: 64px;
+  height: 64px;
+}
+
+.rtcp-vod-homepage .rtcp-vod-viewerpage-nextvideos[media-source="UPLOAD"]:hover .rtcp-grid-video[type="UPLOAD"]{
+  background-image: url('../../images/landingpage/myvideoshover.svg');
+}
+
+.rtcp-vod-homepage .rtcp-grid-video[type="RTCPDEMO"]{
+  background-image: url('../../images/landingpage/video.svg');
+  position: relative;
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px 10px 0 0;
+  width: 64px;
+  height: 64px;
+}
+.rtcp-vod-homepage .rtcp-vod-viewerpage-nextvideos[media-source="RTCPDEMO"]:hover .rtcp-grid-video[type="RTCPDEMO"]{
+  background-image: url('../../images/landingpage/video-hover.svg');
+}
+.rtcp-vod-view-bg-outer
+{
+  width:288px;
+  height:162px;
+  align-items: flex-start !important;
+  background: #F6F6F6;
+}
+.rtcp-vod-view-bg-outer-wrap
+{
+  padding-top: 35px;
+}
+.rtcp-vod-homepage .rtcp-grid-video[type="RTCPDEMO"]{
+  background-image: url('../../images/landingpage/video.svg');
+  position: relative;
+  background-position: center;
+  background-size: cover !important;
+  aspect-ratio: 16/9;
+  border-radius: 10px 10px 0 0;
+}
+.rtcp-vod-homepage .rtcp-grid-video-box:hover .rtcp-grid-video{
+  border-radius: 8px 8px 0 0;
+}
+.rtcp-grid-video-dur{
+  position: absolute;
+  right: 0;
+  bottom: 80px;
+  right: 8px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-container{
+  /* padding: 20px 0; */
+  overflow-y: scroll;
+  height: calc(100vh - 120px);
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-items-title {
+  justify-content: flex-start !important;
+  gap: 4px;
+  cursor: pointer;
+  width: fit-content;
+  z-index: 1;
+}
+
+.rtcp-grid-video-items-header-gap {
+    position: sticky;
+    overflow: hidden;
+    height: 17px;
+    z-index: 3;
+    top: 0px;
+    background: var(--background-1);
+    background-attachment: fixed;
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-items-header {
+    display: flex;
+    gap: 30px;
+    position: sticky;
+    top: 10px;
+    z-index: 3;
+    /* background: #fff; */
+    height: 54px;
+    align-items: anchor-center;
+    padding: 10px;
+    /* margin-top: 14px; */
+    height: 65px;
+    border-radius: 12px;
+
+    /* border-bottom: 4px solid var(--border-color-7); */
+
+    overflow: hidden;
+    /* box-shadow: var(--box-shadow-4); */
+    /* border: 2px solid var(--border-color-9); */
+    border: 2px solid var(--border-color-10);
+    /* border-bottom-width: 0px; */
+    background: var(--background-32);
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-items-header:before, .rtcp-vod-category-skeleton-header:before {
+    background: var(--background-33);
+    /* content: ''; */
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    height: 6px;
+}
+
+.rtcp-vod-category-skeleton-header:before {
+  top: 45px;
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-items {margin-bottom: 24px;}
+
+.rtcp-vod-homepage .rtcp-grid-video-details{
+  padding: 12px;
+  /* position: absolute; */
+  /* background: var(--background-2); */
+  bottom: 0;
+  border-radius: 0 0 9px 9px;
+  width: 100%;
+  padding-top: 10px;
+  z-index: 3;
+  height: 66px;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.5); */
+}
+
+.rtcp-grid-video-details-header {
+  position: relative;
+}
+
+.rtcp-grid-video-items-body {
+  background: var(--background-35);
+  border: 2px solid var(--border-color-10);
+  /* padding: 0px 10px; */
+  border-radius: 21px;
+  margin-top: 10px;
+}
+
+.rtcp-grid-video-list{
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(259px, 1fr));
+  display: grid;
+  padding: 20px 14px;
+  align-content: baseline;
+  max-height: 870px;
+  overflow-y: auto;
+  border-radius: 10px;
+  /* box-shadow: var(--box-shadow-8); */
+}
+
+.rtcp-grid-video-box img {
+  width: 100%;
+  height: 100%;
+}
+
+.rtcp-grid-video-box-img img {border-radius: 9px 9px 0px 0px;}
+.rtcp-grid-video-owner-profile img {border-radius: 8px;}
+
+.rtcp-grid-video-fileformat-box .rtcp-grid-video-box-img {display: none;}
+
+.rtcp-grid-video-fileformat-box .rtcp-grid-video-fileformat-img.audioimg
+{
+  background-image: url('../../images/landingpage/audio.svg');
+}
+
+.rtcp-grid-video-fileformat-box .rtcp-grid-video-fileformat-img.videoimg
+{
+  background-image: url('../../images/landingpage/video.svg');
+}
+
+.rtcp-grid-video-fileformat-box:hover .rtcp-grid-video-fileformat-img.audioimg
+{
+  background-image: url('../../images/landingpage/audio-hover.svg');
+}
+
+.rtcp-grid-video-fileformat-box:hover .rtcp-grid-video-fileformat-img.videoimg
+{
+  background-image: url('../../images/landingpage/video-hover.svg');
+}
+
+.rtcp-grid-video-fileformat-box .rtcp-grid-video-img-container {
+    background: var(--baclground-6) !important;
+}
+
+.rtcp-grid-video-fileformat-box:hover .rtcp-grid-video-img-container {
+    background: var(--baclground-7) !important;
+}
+
+.rtcp-grid-video-fileformat-box .rtcp-grid-video-fileformat-img
+{
+    width: 64px;
+    height: 64px;
+    background-position: center;
+    background-size: cover;
+    left: 40%;
+    position: absolute;
+    top: 13%;
+}
+
+.rtcp-grid-video-img-container {
+  height: 112px;
+  position: relative;
+  border-radius: 6px 6px 0px 0px;
+  overflow: hidden;
+}
+
+.rtcp-grid-video-status-container {
+  background: #000;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  border-radius: 9px 9px 0px 0px;
+  overflow: hidden;
+  top: 0px;
+  height: 100%;
+}
+
+.rtcp-grid-video-upload-progress {
+  font-size: 14px;
+  color: #FFF;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  position: relative;
+  background: radial-gradient(closest-side, #000000 82%, transparent 88%), 
+  conic-gradient(#bc9c1c var(--upload_percentage), #362929 0%);
+}
+
+.rtcp-demo-vod-studio-modal .rtcp-grid-video-upload-progress{
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  font-size: 22px;
+}
+
+.rtcp-grid-video-upload-progress.active .progress-percentage {
+  animation: blink 1s linear infinite; 
+}
+
+.rtcp-grid-video-upload-progress .rtcp-demo-vod-icon-upload {
+    font-size: 24px;
+}
+
+.rtcp-grid-video-box .rtcp-demo-vod-icon-upload{
+  font-size: 16px;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); opacity: 0; }
+  25%  { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1); opacity: 1; }
+  75%  { transform: scale(1); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  
+  50%{
+     opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+.rtcp-grid-video-status-container[status="preview"] .rtcp-demo-vod-icon-upload-preview {
+  border: 3px solid #362929;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.rtcp-grid-video-status-container[status="preview"] .rtcp-grid-video-status {
+  top: 53%;
+}
+
+
+.rtcp-demo-vod-upload-state-video-icon {
+  font-size: 20px;
+}
+
+.rtcp-demo-vod-studio-modal .rtcp-demo-vod-upload-state-video-icon {
+  font-size: 24px;
+}
+
+.rtcp-demo-vod-upload-state-video-icon.rtcp-demo-vod-icon-processing, .rtcp-demo-vod-upload-state-video-icon.rtcp-demo-vod-icon-processing-begin {
+  animation: rotate 2s linear infinite;
+}
+
+.rtcp-demo-vod-upload-state-video-icon.rtcp-demo-vod-icon-processing-begin {animation-duration: 3s;}
+
+.rtcp-demo-vod-upload-state-video-icon.rtcp-demo-vod-icon-alert-fill{
+  color: rgb(244, 63, 94);;
+}
+
+.rtcp-demo-vod-upload-state-video-error-retry {
+  color: #377DFF;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25%{
+     transform: rotate(90deg);
+  }
+  50%{
+     transform: rotate(180deg);
+  }
+  75%{
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rtcp-grid-video-status-text {
+  color: #FFF;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-time-and-views{
+  color: var(--font-color-3);
+  font-size: 13px;
+  line-height: 20px;
+  opacity: 0.7;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.rtcp-vod-homepage .dot-separator{
+  width: 4px;
+  height: 4px;
+  border-radius: 10px;
+  opacity: 0.4;
+  background: var(--font-color-4);
+}
+
+/** Viewers page **/
+.rtcp-vod-viewerpage-outercontainer {
+  /* height: 99vh; */
+  /* height: calc(100% - 88px); */
+  overflow-y : scroll;
+  position: relative;
+  height: 100%;
+  /* height: 100vh; */
+  /* position: fixed; */
+}
+.rtcp-vod-homepage .rtcp-vod-viewerpage-container{
+  /* justify-content: flex-start; */
+  /* padding: 32px 20px; */
+  align-items: flex-start;
+  /* max-width: 1440px; */
+  /* gap: 60px; */
+  margin: auto;
+  position: relative;
+  top: 32px;
+}
+
+.rtcp-vod-homepage.aspectRatio-43 .rtcp-vod-viewerpage-container{
+  justify-content: center;
+}
+
+.rtcp-vod-video-container{
+  position: relative;
+  /* height: 633px; */
+  /* background-color: #161616; */
+  border-radius: 8px;
+  aspect-ratio: 16/9;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  /* border: 1px solid var(--border-color-4); */
+}
+
+.rtcp-vod-video-container video{
+  object-fit: contain !important;
+}
+
+.rtcp-vod-video-container[rtcpmediaplayer][mode="video"] .rtcpmediaplayerdiv {
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: unset;
+}
+
+.rtcp-vod-viewerpage-lhs{
+  /* width: calc(100% - 328px); */
+  /* overflow: scroll; */
+  /* padding-right: 20px; */
+  width: 70%;
+  margin-bottom: 32px;
+  /* height : 100vh; */
+  margin-right: 20px;
+}
+
+.rtcp-vod-video-desc-container{
+  margin: 20px 0 24px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color-4);
+}
+.rtcp-vod-video-title{
+  color: var(--font-color-3);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+}
+.rtcp-vod-video-desc-area{
+  background: var(--background-3);
+  padding: 16px 24px;
+  border-radius: 0 0 10px 10px;
+  container-type: normal;
+  container-name: description;
+}
+
+.rtcp-vod-video-desc-wrapper {
+  display: flex;
+  line-height: 24px;
+}
+
+.rtcp-vod-video-desc{
+  overflow: hidden;
+  color: var(--font-color-8);
+  /* text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical; 
+  display: -webkit-box; */
+  display: inline;
+  font-size: 14px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.rtcp-vod-video-desc-read-more {display: none;}
+
+.rtcp-vod-video-desc[expanded] .rtcp-vod-video-desc-read-more {
+  display: inline;
+  position: relative;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.rtcp-vod-video-desc[expanded="true"] .rtcp-vod-video-desc-read-more {
+  display: block;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+.rtcp-vod-video-desc[expanded="false"] .rtcp-vod-video-desc-read-more::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 0;
+  width: 30px;
+  height: 100%;
+  background: var(--background-38);
+  pointer-events: none;
+}
+
+@container description(height > 56px)
+{
+  .readmore-btn
+  {
+    display: none;
+  }
+}
+
+.rtcp-vod-viewerpage-rhs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.rtcp-vod-viewerpage-playlist-sec{/* .rtcp-vod-viewerpage-rhs{ */
+  width: 328px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color-4);
+  overflow: hidden;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  /* min-height: 99vh; */
+}
+
+.rtcp-vod-video-recommendations-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 16px; */
+}
+
+.rtcp-vod-video-recommendations-list .rtcp-grid-video-box {width: 320px;}
+.rtcp-vod-video-recommendations-list > .rtcp-vod-category-skeleton-video-box {width: 290px;}
+.rtcp-vod-video-recommendations-list.loading {height: 1040px;}
+
+.rtcp-vod-viewerpage-rhs-header{
+  border-bottom: 1px solid var(--border-color-4);
+  padding: 16px 20px;
+}
+.rtcp-vod-video-details-sec{
+  padding: 16px;
+}
+.readless-btn{
+  display: none;
+}
+.readmore-btn{
+  display: inline;
+}
+.readmore-btn,.readless-btn{
+  color: #377DFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+}
+.readmore-btn:hover,.readless-btn:hover{
+  color: #2C64CC;
+  text-decoration-line: underline;
+  text-underline-position: under;
+  cursor: pointer;
+}
+.rtcp-vod-homepage .rtcp-vod-video-owner-sec{
+  justify-content: flex-start;
+  padding: 16px 0;
+  gap: 24px;
+}
+.rtcp-vod-video-owner-profile{
+  border-radius: 100px;
+  border: 1px solid #E7EBF0;
+  background-size: cover;
+}
+
+.rtcp-vod-video-owner-profile img, .rtcp-self-commenter-profile img, .rtcp-vod-viewers-comment-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: inherit;
+}
+
+.rtcp-vod-reply-comment img {width: 24px; height: 24px;}
+
+.rtcp-vod-video-followers-count {margin-right : 2px;}
+
+.rtcp-vod-homepage .rtcp-vod-video-followers-sec{
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+.rtcp-vod-video-ownername, .rtcp-grid-video-items-title-heading{
+  /* color: var(--font-color-3); */
+  color: var(--font-color-17);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.rtcp-vod-video-owner-details{
+  gap: 10px;
+}
+.rtcp-vod-video-followers,  .rtcp-grid-video-items-title-count{
+  /* color: var(--font-color-4); */
+  color: var(--font-color-17);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  opacity: 0.7;
+}
+
+.rtcp-grid-video-items-title-count {font-size: 16px;} 
+
+.rtcp-demo-vod-icon-dropdown-icon:before{
+  content: '\e9ae';
+  font-size: 16px;
+  /* opacity: 0.75; */
+  /* color: var(--font-color-5); */
+}
+
+.rtcp-demo-vod-icon-dropdown-icon2:before{
+  content: '\e994';
+  font-size: 16px;
+  /* opacity: 0.75; */
+  /* color: var(--font-color-5); */
+}
+
+.rtcp-vod-follow-btn{
+  border-radius: 20px;
+  border: var(--border-color-6);
+  background: var(--background-1);
+  width: 100px;
+  height: 36px;
+  color: #377DFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.14px;
+}
+
+.rtcp-vod-follow-btn:hover,.rtcp-share-popup-videolink-embed-btn:hover{
+  background: #377DFF;
+  color: #fff;
+  cursor: pointer;
+}
+.rtcp-vod-homepage .rtcp-vod-viewerpage-rhs-header{
+  justify-content: space-between;
+}
+.rtcp-vod-morevideos{
+  color: var(--font-color-9);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.autoplay-switch, .rtcp-vod-slider {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  margin: 0px;
+}
+input:checked + .slider {
+  background-color: #2ECC71;
+}
+.rtcp-vod-slider .slider.round {
+  border-radius: 34px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.rtcp-vod-slider .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #C4C4C4;
+  transition: .4s;
+}
+.rtcp-vod-slider input:checked + .slider:before {
+  transform: translateX(16px);
+}
+.rtcp-vod-slider .slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+}
+.rtcp-vod-slider .slider.round:before {
+  border-radius: 50%;
+}
+.rtcp-vod-autoplay{
+  gap: 8px;
+}
+.rtcp-vod-viewerpage-nextvideos-sec{
+  /* padding: 16px; */
+  overflow: scroll;
+  /* height: calc(100vh - 80px); */
+  height: 672px;
+}
+.rtcp-vod-viewerpage-nextvideos-list{
+  flex-direction: column;
+  /* gap: 16px; */
+}
+.rtcp-vod-viewerpage-nextvideos{
+  border-radius: 10px;
+  border: 1px solid #E7EBF0;
+  background: #fff;
+  height: 194px;
+  position: relative;
+}
+
+.rtcp-vod-homepage .rtcp-grid-video-box:hover::before {
+  /* content: ""; */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* border: 2px solid #377DFF; */
+  border: 2px solid #377dffc2;
+  margin: -2px;
+  /* cursor: pointer; */
+  box-shadow: 0px 2px 0px 0px rgba(55, 125, 255, 0.15);
+  box-sizing: content-box;
+  border-radius:11px;
+  z-index: 2;
+}
+.rtcp-vod-viewerpage-nextvideos .rtcp-grid-video-time-and-views{
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+.rtcp-vod-viewerpage-nextvideos .rtcp-grid-video-details{
+  padding: 8px;
+}
+.rtcp-vod-nextvideos-video-info{
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+}
+
+.rtcp-vod-viewerpage-nextvideos .rtcp-grid-video-title,.rtcp-vod-homepage .rtcp-grid-video-title{
+  border-radius: 8px;
+}
+.rtcp-grid-video-list .rtcp-grid-video-title{
+  overflow: hidden;
+  color: var(--font-color-1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  width: 200px;
+}
+.rtcp-vod-homepage .rtcp-grid-video-title{
+  font-size: 14px;
+  line-height: 24px;
+  height: 24px;
+}
+
+.rtcp-grid-video-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rtcp-grid-video-viewcount {gap: 4px;}
+
+.rtcp-vod-homepage .rtcp-vod-video-posted-details-sec{
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.rtcp-vod-homepage .rtcp-vod-video-posted-details-sec > * {gap : 8px;}
+
+.rtcp-vod-video-posted-details-separator{
+  width: 1px;
+  height: 16px;
+  opacity: 0.4;
+  background: #333;
+}
+.rtcp-vod-video-posted-date-title,.rtcp-vod-video-posted-views-title,
+.rtcp-vod-video-posted-date,.rtcp-vod-video-posted-views,.rtcp-vod-video-posted-time{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--font-color-5);
+}
+
+.rtcp-vod-video-posted-date-title,.rtcp-vod-video-posted-views-title{
+  color: var(--font-color-7);
+}
+.rtcp-vod-video-posted-analytics{
+  color: #377DFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  gap: 4px;
+  border-radius: 40px;
+  padding: 8px;
+  background: #fff;
+  margin-left: -8px;
+}
+.rtcp-vod-video-posted-analytics:hover{
+  background: rgba(55,125,255,0.1);
+  color: #2C64CC;
+  cursor: pointer;
+}
+.rtcp-vod-video-posted-analytics::before{
+  content: '\e91e';
+  font-size: 20px;
+}
+
+.rtcp-vod-like-cont {
+  /* max-width: 78px; */
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  background: right center var(--background-3);
+  position: relative;
+  gap: 6px;
+  padding: 0px 10px 0px 10px;
+}
+
+.rtcp-vod-like-btn
+{
+  position: absolute;
+  left: -2px;
+  height: 34px;
+  width: 48px;
+  background-image: url(../../images/landingpage/likeanimation.png);
+  background-size: 1845px 57px;
+  background-position: -10px -11px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+}
+
+.like-btn-space {width: 20px;}
+
+.rtcp-vod-like-btn[status='liked'] 
+{
+  animation: heart-burst .8s steps(26) 1;
+  animation-fill-mode : forwards;
+}
+
+.rtcp-vod-like-btn:after{top: 42px;}
+
+@keyframes heart-burst 
+{
+  from {
+    background-position: -10px -11px;
+  }
+  to {
+      background-position: -1664px -11px;
+  }
+}
+
+.rtcp-vod-like-btn:hover:before,.rtcp-vod-unlike-btn:hover:before{
+   color: rgba(255, 57, 95, 1);
+}
+
+.rtcp-vod-like-cont:hover{
+   background: var(--background-8);
+   cursor: pointer;
+}
+
+.rtcp-vod-like-cont:after,.rtcp-vod-unlike-btn:after,.rtcp-vod-share-btn:after{
+  top: calc(100% + 5px);
+}
+.rtcp-vod-unlike-btn:before{
+  content: '\e921';
+  font-size: 24px;
+  color: rgba(255, 57, 95, 1);
+}
+.rtcp-vod-unlike-btn:hover:after{
+  content: "Unlike" !important;
+}
+.rtcp-vod-share-btn{
+  color: #545A6A;
+  border-radius: 40px;
+  background: rgba(231, 235, 240, 0.50);
+  padding: 6px 16px;
+  position: relative;
+  cursor: pointer;
+}
+.rtcp-demo-vod-icon-share:before{
+  content: '\e923';
+  opacity: 0.75;
+  font-size: 24px;
+}
+.rtcp-vod-share-btn:hover:before{
+  opacity: 1;
+}
+.rtcp-vod-viewerpage-nextvideos .rtcp-grid-video{
+  position: relative;
+  background-image: url('https://img.freepik.com/free-photo/vestrahorn-mountains-stokksnes-iceland_335224-667.jpg');
+  width: 288px;
+  height: 162px;
+  aspect-ratio: unset;
+}
+.rtcp-vod-nextvideos-duration{
+  position: absolute;
+  border-radius: 4px;
+  bottom: 64px;
+  padding: 4px;
+}
+.rtcp-grid-video-box-owner-tag,.rtcp-grid-video-duration{
+  position: absolute;
+  border-radius: 4px;
+  bottom: 10px;
+  padding: 4px;
+}
+.rtcp-grid-video-box-owner-tag{
+  left: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  gap: 0;
+  transition: background 0.2s ease-in-out 0.5s, gap 0.2s 0.5s;
+  z-index: 2;
+}
+
+.rtcp-grid-video-box:hover .rtcp-grid-video-box-owner-tag{
+  background: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  gap: 6px;
+  transition: background 0s 0s;
+}
+.rtcp-vod-viewerpage-nextvideos:hover .rtcp-grid-video-ownername,
+.rtcp-grid-video-box:hover .rtcp-grid-video-ownername{
+  max-width: 300px;
+}
+.rtcp-vod-nextvideos-duration,.rtcp-grid-video-duration{
+  right: 8px;
+  background: rgba(0, 0, 0, 0.85);
+}
+.rtcp-grid-video-owner-profile{
+  background-image: url('../../vod/vod-owner.svg');
+  width: 16px;
+  height: 16px;
+  border-radius: 66.667px;
+  background-size: cover;
+}
+.rtcp-grid-video-ownername,.rtcp-vod-nextvideos-duration,.rtcp-grid-video-duration{
+  color: #FFF;
+  font-size: 12px;
+  line-height: 16px;
+}
+.rtcp-grid-video-ownername{
+  font-weight: 500;
+  max-width: 0;
+  transition: max-width 0.5s;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.rtcp-vod-nextvideos-progress-bar-container{
+  position: absolute;
+  width: 100%;
+  bottom: 56px;
+  height: 4px;
+  background: rgba(0,0,0,.5);
+}
+
+.rtcp-home-videos-list .rtcp-vod-nextvideos-progress-bar-container
+{
+  bottom: 66px;
+}
+
+.rtcp-vod-nextvideos-progress-bar-container:has(.dN)
+{
+  background-color: transparent;
+}
+.rtcp-vod-homepage .rtcp-grid-video-box-progress-bar-container{
+  position: absolute;
+  width: 100%;
+  bottom: 68px;
+  height: 4px;
+  background: rgba(0,0,0,.5);
+}
+.rtcp-vod-nextvideos-progress-bar{
+  background: #2ECC71;
+  height: 4px;
+}
+.rtcp-share-popup-overlay{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 50%;
+  z-index: 1;
+}
+.rtcp-share-popup-hidden{
+  display: none;
+}
+.rtcp-share-popup{
+  background: #fff;
+  border-radius: 16px;
+  position: absolute;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 452px;
+}
+.rtcp-share-popup-title-sec{
+  padding: 8px;
+  border-bottom: 1px solid #E7EBF0;
+}
+.rtcp-share-popup-title{
+  color: var(--font-color-3);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+}
+.rtcp-close-share-popup{
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  padding: 4px;
+}
+.rtcp-close-share-popup:before{
+  content: '\e997';
+  font-size: 24px;
+}
+.rtcp-close-share-popup:hover{
+  opacity: 1;
+}
+.rtcp-share-popup-videolink-title{
+  color: #2A2A4B;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+.rtcp-share-popup-videolink{
+  border-radius: 8px;
+  border: 1px solid #E7EBF0;
+  background: #F8F9FB;
+  padding: 10px;
+}
+.rtcp-share-popup-videolink-input{
+  width: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  color: #377DFF;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: none;
+}
+.rtcp-share-popup-content-sec{
+  margin: 16px;
+}
+.rtcp-vod-homepage .rtcp-share-popup-videolink-bottom-sec{
+  justify-content: space-between;
+  margin-top: 12px;
+}
+.rtcp-share-popup-videolink-starttime-sec{
+  color: #2A2A4B;
+  font-size: 14px;
+  line-height: 20px;
+  gap: 12px;
+}
+.rtcp-share-popup-videolink-starttime-tickicon{
+  outline: none!important;
+  position: relative;
+  flex-shrink: 0;
+  height: 20px;
+  width: 20px;
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
+  opacity: unset;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #6699ED;
+  margin: 0px;
+  box-sizing: unset;
+  appearance: unset;
+  padding: 0px;
+  cursor: pointer;
+}
+.rtcp-share-popup-videolink-starttime-tickicon:checked{
+  border: 1.5px solid #2ECC71;
+  background: #2ECC71;
+}
+.rtcp-share-popup-videolink-starttime-tickicon:checked:before{
+  display: flex;
+  color: white;
+  content: "\e9ac";
+  font-size: 16px;
+}
+.rtcp-share-popup-videolink-copysec{
+  gap: 16px;
+}
+.rtcp-share-popup-videolink-embed-btn{
+  border-radius: 20px;
+  border: var(--border-color-6);
+  color: #377DFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.14px;
+  padding: 8px 16px;
+  height: 36px;
+  cursor: pointer;
+}
+.rtcp-share-popup-videolink-embed-btn:before{
+  content: "\e924";
+  font-size: 20px;
+  margin-right: 8px;
+}
+.rtcp-share-popup-videolink-copy-btn{
+  border-radius: 20px;
+  background: #377DFF;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.14px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.rtcp-share-popup-videolink-copy-btn:before{
+  content: "\e91f";
+  font-size: 20px;
+  margin-right: 8px;
+}
+.rtcp-share-popup-videolink-copy-btn:hover,
+.rtcp-vod-comment-sec:not(.btn-inactive) .rtcp-self-comment-btn:hover,
+.rtcp-vod-upload-btn:hover{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #377DFF;
+  cursor: pointer;
+}
+.rtcp-videolink-copied-popup{
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  margin: auto;
+  top: 55px;
+  left: 45%;
+  gap: 10px;
+  overflow: hidden;
+  background: #fff;
+  position: absolute;
+  border-radius: 40px;
+  padding: 8px 32px 8px 10px;
+  box-shadow: 0px 0px 16px 0px rgba(9, 11, 33, 0.10), 0px 2px 4px 0px rgba(9, 11, 33, 0.10);
+}
+.rtcp-videolink-copied-popup-icon{
+  background-color: #31C440;
+  padding: 7px;
+  border-radius: 20px;
+  width: 32px;
+  height: 32px;
+}
+.rtcp-videolink-copied-popup-icon:before{
+  content: "\e9ac";
+  color: #fff;
+  font-size: 15px;
+}
+.alert-banner-slide-down {
+  animation: alert-banner-slide-down 0.5s ease-in-out;
+}
+
+.alert-banner-slide-up {
+  animation: alert-banner-slide-up 0.5s ease-in-out;
+}
+
+@keyframes alert-banner-slide-down {
+  from {
+    transform: translateY(-300%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes alert-banner-slide-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-300%);
+  }
+}
+
+.rtcp-vod-comment-sec {
+  margin-bottom: 120px;
+}
+
+.rtcp-vod-comment-sec-header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+}
+
+.rtcp-vod-total-comments-count-sec{
+  gap: 8px;
+}
+
+.rtcp-vod-total-comments-count-sec span{
+  color: var(--font-color-9);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.rtcp-demo-vod-icon-comment:before{
+  content: "\e922";
+  color: #377DFF;
+  font-size: 24px;
+}
+
+.rtcp-vod-sort {
+  cursor: pointer;
+  position: relative;
+}
+
+.rtcp-vod-category-slider {
+    color: var(--font-color-5);
+    background: var(--background-25);
+    box-shadow: var(--box-shadow-10);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease-out;
+}
+
+.rtcp-grid-video-items-header .rtcp-vod-sort {
+  height: 24px;
+  border-radius: 12px;
+  width: 87px;
+  height: 32px;
+  color: var(--font-color-5);
+  background: var(--background-25);
+  box-shadow: var(--box-shadow-10);
+}
+
+.rtcp-grid-video-items-header .rtcp-vod-sort:hover, .rtcp-vod-category-slider:hover,
+.rtcp-grid-video-items-header .rtcp-vod-sort.active,
+.rtcp-grid-video-details .rtcp-grid-video-edit:hover{
+  background: var(--background-26);
+  color: var(--font-color-17);
+}
+
+.rtcp-grid-video-overlay-options .rtcp-grid-video-more-options:hover, .more-opt-active .rtcp-grid-video-overlay-options .rtcp-grid-video-more-options {
+  /* background: var(--background-34); */
+  background: var(--background-26);
+  color: var(--font-color-17);
+}
+
+.rtcp-vod-sort span{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-right: 5px;
+}
+.rtcp-vod-sort:before{
+  content: "\e91c";
+  /* color: var(--font-color-6); */
+  /* opacity: 0.75; */
+  font-size: 18px;
+  /* margin-right: 8px; */
+}
+
+.rtcp-vod-sort-content{
+  /* display: none; */
+  background: var(--background-1);
+  border-radius: 4px;
+  position: absolute;
+  /* top: 28px; */
+  left: 0;
+  padding: 4px 6px;
+  width: 180px;
+  z-index: 3;
+  box-shadow: var(--box-shadow-5);
+}
+
+.rtcp-grid-video-items-header .rtcp-vod-sort-content {top: 30px; z-index: 99;}
+
+.rtcp-vod-sort-dropdwncontent{
+  padding: 8px;
+  color: var(--font-color-18);
+  font-size: 15px;
+  line-height: 20px;
+  cursor: pointer;
+  margin: 2px;
+  border-radius: 4px;
+}
+
+.rtcp-vod-sort-dropdwncontent.active,
+.rtcp-vod-sort-dropdwncontent:hover
+{
+  color: var(--font-color-1);
+  background: var(--background-27);
+}
+
+.rtcp-vod-opt-cont:hover {
+  color: #fff;
+  background: var(--background-27);
+}
+
+
+.rtcp-self-commenter-profile{
+  border-radius: 36px;
+  border: 1px solid var(--border-color-5);
+  background-size: cover;
+}
+
+.rtcp-self-comment-sec{
+  gap: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+.rtcp-self-commenter-box{
+  border-radius: 8px;
+  border: 1px solid var(--border-color-1);
+}
+.rtcp-self-commenter-box-sec{
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.rtcp-self-commenter-box {
+  border-radius: 8px;
+  border: 1px solid var(--border-color-1);
+  flex-grow: 1;
+  padding: 9px 12px;
+  gap: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  outline: none;
+}
+
+.rtcp-self-commenter-box-input-sec[aria-label]:empty:before, .rtcp-viewer-commenter-box-input-sec[aria-label]:empty:before {
+  content: "Drop your comments here";
+  cursor: text;
+  color: #9CA3AF;
+  line-height: 20px;
+}
+
+.rtcp-self-commenter-box-input-sec, .rtcp-viewer-commenter-box-input-sec {
+  width: 94%;
+  outline: none;
+  color: var(--font-color-3);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.rtcp-self-commenter-box.active, .rtcp-vod-reply-comment.active .rtcp-vod-viewers-comment:focus-within{
+  border: var(--border-color-6);
+  box-shadow: 0px 2px 0px 0px rgba(55, 125, 255, 0.15);
+}
+
+.rtcp-vod-reply-comment.active .rtcp-vod-viewers-comment:focus-within {background: #ffffff;}
+
+.rtcp-vod-viewers-comment:focus-within{
+  border-radius: 8px;
+}
+.rtcp-self-commenter-box-input{
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.rtcp-self-commenter-box-emojis{
+  position: absolute;
+  right: 12px;
+  top: 9px;
+  display: none;
+}
+
+.rtcp-self-commenter-box.active + .rtcp-self-commenter-box-emojis{
+  display: block;
+}
+
+.rtcp-demo-vod-icon-emojis:before{
+  content: '\e9bc';
+  cursor: pointer;
+  color: rgb(84, 90, 106);
+  opacity: 0.75;
+}
+
+.rtcp-self-commenter-box-emojis:after{
+  bottom: calc(100% + 5px);
+}
+.rtcp-self-comment-actions{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+  flex: 1;
+}
+.rtcp-self-comment-cancel-btn{
+  color: #545A6A;
+  font-size: 16px;
+  line-height: 34px;
+  letter-spacing: 0.16px;
+  opacity: 0.75;
+}
+.rtcp-self-comment-cancel-btn:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.rtcp-self-comment-btn{
+  border-radius: 20px;
+  background: #377DFF;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.14px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.btn-inactive .rtcp-self-comment-btn {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.rtcp-vod-viewers-comment-sec{
+  margin-top: 24px;
+}
+
+.rtcp-vod-viewers-info-sec { width : 100%; height: 100%; position: relative; margin: 10px 0px 0px 10px; }
+
+.rtcp-vod-viewers-info{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 16px;
+} 
+
+.rtcp-vod-viewers-comment-box {
+  display: flex;
+  /* justify-content: center; */
+  gap: 12px;
+  position: relative;
+  margin-bottom: 12px;
+  /* align-items: baseline; */
+}
+
+.rtcp-comment-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.rtcp-vod-viewers-name{
+  color: var(--font-color-9);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+}
+.rtcp-vod-viewers-commented-time{
+  margin: 2px 16px 0 12px;
+  color: #A7B5D1;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.rtcp-vod-viewers-comment-actions{
+  position: relative;
+  cursor: pointer;
+}
+
+.rtcp-demo-vod-icon-comment-actions::before {
+  content: "\e9a1";
+}
+
+.rtcp-vod-viewers-comment-actions:before{
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(84, 90, 106);
+  opacity: 0.75;
+}
+.rtcp-vod-viewers-comments-outer{
+  border-radius: 8px;
+  background: var(--background-10);
+  padding: 10px;
+}
+
+.rtcp-vod-reply-comment.active .rtcp-vod-viewers-comments-outer{
+  display: flex;
+}
+
+.rtcp-vod-viewers-comments-outer .rtcp-vod-viewers-comment{
+  padding: 0;
+}
+
+.rtcp-vod-reply-comment.active .rtcp-vod-viewers-comment {
+  border-radius: 8px;
+  border: 1px solid #E7EBF0;
+  padding: 10px 12px;
+}
+
+.rtcp-vod-reply-comment .rtcp-self-comment-actions-outer {position: relative; left: -14px;}
+
+.rtcp-vod-viewers-comment{
+  display: flex;
+  flex-grow: 1;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.rtcp-viewer-comment-separator{
+  position: absolute;
+  height: 100%;
+  border-left: 1px solid var(--border-color-1);
+  left: 20px;
+}
+
+.rtcp-vod-viewer-comment-sentence{
+  color: var(--font-color-3);
+  font-size: 14px;
+  line-height: 24px;
+  width: 100%;
+  outline: none;
+}
+.rtcp-self-commenter-box-emojis:hover:before{
+  opacity: 1;
+}
+.rtcp-vod-more-opt-cont{
+  color: rgba(255, 255, 255, 0.7);
+  /* background: #000; */
+  background: #000;
+  box-shadow: var(--box-shadow-5);
+  /* color: var(--font-color-18); */
+  border-radius: 4px;
+  position: absolute;
+  top: 0px;
+  right: -186px;
+  padding: 4px 0;
+  width: 180px;
+  z-index: 3;
+}
+
+.rtcp-vod-opt-cont{
+  padding: 8px;
+  cursor: pointer;
+}
+
+.rtcp-vod-opt{
+  font-size: 15px;
+  line-height: 20px;
+  display: flex;
+}
+.rtcp-vod-opt:before{
+  font-size: 20px;
+  margin-right: 10px;
+}
+.rtcp-demo-vod-icon-delete:before{
+  content: "\e992";
+}
+
+.rtcp-self-comment-actions-outer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rtcp-comment-actions{
+  display: flex;
+  padding: 8px;
+}
+.rtcp-demo-vod-icon-comment-like,.rtcp-demo-vod-icon-comment-dislike{
+  margin-right: 16px;
+}
+.rtcp-demo-vod-icon-comment-like,.rtcp-demo-vod-icon-comment-dislike,.rtcp-demo-vod-icon-comment-reply{
+  opacity: 0.75;
+  color: var(--font-color-6);
+  height: 28px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 4px 6px;
+  font-size: 12px;
+}
+.rtcp-demo-vod-icon-comment-like:before,.rtcp-demo-vod-icon-comment-dislike:before,.rtcp-demo-vod-icon-comment-reply:before{
+  font-size: 20px;
+  margin-right: 6px;
+}
+.rtcp-demo-vod-icon-comment-like:before{
+  content: "\e911";
+}
+.rtcp-demo-vod-icon-comment-dislike:before{
+  content: "\e913";
+}
+.rtcp-demo-vod-icon-comment-reply:before{
+  content: "\e91d";
+}
+.rtcp-vod-viewers-comments-sentence{
+  color: #333;
+  font-size: 14px;
+  line-height: 20px;
+}
+.rtcp-comment-actions-hide-replies:before,.rtcp-demo-vod-icon-comment-reply-count:before{
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 10px;
+  opacity: 0.4;
+  background: #333;
+  margin: 0 8px 0 2px;
+}
+
+.rtcp-vod-viewers-comment-profile{
+  border-radius: 36px;
+  border: 1px solid var(--border-color-1);
+  background-size: cover;
+  border-radius: 36px;
+  z-index: 1;
+  /* margin: 0 12px; */
+  height: 100%;
+}
+
+.rtcp-vod-reply-comment .rtcp-vod-viewers-comment-profile { margin: 0 12px;}
+
+.rtcp-vod-reply-comment.rtcp-vod-viewers-comment-box {gap: 0px}
+
+.rtcp-vod-viewers-comments-outer .rtcp-vod-viewers-info-sec{
+  margin-top: 10px;
+}
+.rtcp-vod-viewers-comments-outer  .rtcp-vod-viewers-comments-outer{
+  background: none;
+}
+.rtcp-vod-viewers-comments-outer .rtcp-vod-viewers-info{
+  margin-bottom: 0;
+}
+
+.rtcp-vod-self-reply .rtcp-vod-viewers-comment:focus-within{
+  padding: 10px 12px;
+}
+.rtcp-vod-inner-comment{
+  margin-left: 24px;
+  padding: 0 0 0 24px;
+}
+.rtcp-demo-vod-icon-comment-reply-count{
+  display: flex;
+  align-items: center;
+  color: #377DFF;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+.rtcp-demo-vod-icon-comment-reply-count:hover{
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+.rtcp-vod-tag-viewers{
+  color: #377DFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.rtcp-demo-vod-icon-comment-dislike.selected{
+  opacity: 1;
+  font-weight: 500;
+}
+.selected.rtcp-demo-vod-icon-comment-dislike:before{
+  content: "\e914";
+}
+.rtcp-demo-vod-icon-comment-like.selected{
+  opacity: 1;
+  color: #377DFF;
+  font-weight: 500;
+}
+.selected.rtcp-demo-vod-icon-comment-like:before{
+  content: "\e912";
+}
+.rtcp-demo-vod-icon-comment-like:hover,.rtcp-demo-vod-icon-comment-dislike:hover, .rtcp-demo-vod-icon-comment-reply:hover{
+  background: var(--background-9);
+  cursor: pointer;
+  opacity: 1;
+}
+.rtcp-demo-vod-icon-comment-like:hover:before{
+  color: #377DFF;
+}
+.rtcp-vod-viewers-unhide-comments{
+  color: rgb(84, 90, 106);
+  font-size: 15px;
+  line-height: 20px;
+  display: flex;
+}
+.rtcp-vod-viewers-unhide-comments:hover{
+  color: #377DFF;
+  cursor: pointer;
+  font-weight: 500;
+}
+.rtcp-vod-viewers-unhide-comments:before{
+  content: "\e9b2";
+  font-size: 20px;
+  margin-right: 6px;
+}
+.rtcp-scroll-top{
+  position: fixed;
+  right: 48px;
+  bottom: 48px;
+  z-index: 2;
+  cursor: pointer;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+  border-radius: 30px;
+  background: #377DFF;
+  box-shadow: 0px 1.28573px 2.57146px 0px rgba(0, 0, 0, 0.30), 0px 2.57146px 7.71437px 2.57146px rgba(0, 0, 0, 0.15);
+  width: 48px;
+  height: 48px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+}
+.rtcp-scroll-top:hover{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #377DFF;
+  box-shadow: 0px 1.28573px 2.57146px 0px rgba(0, 0, 0, 0.30);
+}
+.rtcp-scroll-top:before{
+  content: "\e9af";
+  color: #fff;
+  font-size: 24px;
+}
+.rtcp-scroll-top:after{
+  left: calc(100% - 100px) !important;
+}
+.rtcp-vod-replies-sec,.open{
+  transition: max-height 0.5s ease-out;
+}
+.rtcp-vod-replies-sec.close {
+  max-height: 0;
+  overflow: hidden;
+}
+.rtcp-comment-actions-hide-replies{
+  color: #545A6A;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+}
+.show{
+  display: block;
+}
+
+.rtcp-vod-video-player-innererror-text
+{
+  width: inherit;
+  color: white;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: inherit;
+}
+
+/** Upload Video Page **/
+.rtcp-vod-container-hidden
+{
+  opacity: 0.8;
+  background: #000;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.rtcp-vod-upload-outer-primary-page, .rtcp-vod-upload-preview-outer
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+  top: -100%;
+  left: 50%;
+  transition: all 0.5s ease;
+  transform: translateX(-50%);
+  position: fixed;
+}
+.rtcp-vod-upload-outer-primary-page.active, .rtcp-vod-upload-preview-outer.active
+{
+  visibility: visible;
+  opacity: 1;
+  top:50%;
+  animation: slide-down 0.7s ease forwards;
+}
+
+.rtcp-vod-upload-outer-primary-page.inactive, .rtcp-vod-upload-preview-outer.inactive
+{
+  animation: slide-up 0.7s ease forwards;
+}
+
+@keyframes slide-down {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  100% {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
+
+.rtcp-vod-upload-outer-page
+{
+  display: flex;
+  border-radius: 10px;
+  background: #FFF;
+}
+
+.rtcp-vod-upload-page
+{
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: inline-flex;
+}
+
+.rtcp-vod-upload-header
+{
+  width:100%;
+  padding:16px 32px;
+  background: white;
+  border-bottom: 1px #E7EBF0 solid;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 208px;
+  display: inline-flex
+}
+
+.rtcp-vod-upload-body
+{
+  background: rgba(248, 249, 251, 0.60);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px #E7EBF0 solid;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  margin: 22px 30px 32px 30px;
+}
+
+.rtcp-vod-upload-header-title
+{
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  word-wrap: break-word;
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+}
+
+.rtcp-vod-upload-header-close,.rtcp-vod-upload-preview-header-close
+{
+  padding: 4px;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  height: 32px;
+}
+
+.rtcp-vod-upload-header-close:hover, .rtcp-vod-upload-preview-header-close:hover
+{
+	background: rgba(231, 235, 240, 1);
+	border-radius: 40px;
+}
+
+.rtcp-vod-upload-header-close:before,.rtcp-vod-upload-preview-header-close:before
+{
+	content: "\e997";
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.rtcp-vod-upload-body-container
+{
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  display: inline-flex;
+  padding: 61px 195px;
+}
+
+.rtcp-vod-upload-body-camera
+{
+  height: 96px;
+  position: relative;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.rtcp-vod-upload-body-content
+{
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+  width: 227px;
+}
+
+.rtcp-vod-upload-body-content-titleheader
+{
+  text-align: center;
+  color: #3F3F60;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+
+.rtcp-vod-upload-body-content-header
+{
+  opacity: 0.75;
+  text-align: center;
+  color: #545A6A;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+
+.rtcp-vod-upload-preview
+{
+    background: #FFF;
+    border-radius: 10px;
+}
+
+.rtcp-vod-upload-preview-header
+{
+  width: 100%;
+  padding:16px 24px;
+  border-bottom: 1px #E7EBF0 solid;
+  justify-content: space-between;
+  display: inline-flex;
+}
+
+.rtcp-vod-upload-preview-header-title
+{
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  word-wrap: break-word;
+}
+
+.rtcp-vod-upload-preview-body
+{
+  display: flex;
+}
+
+.rtcp-vod-upload-preview-body-container-lhs
+{
+  width: 100%;
+  padding:108px 32px;
+  background: #F8F9FB;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs
+{
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 50px;
+  padding-left: 24px;
+  padding-right: 22px;
+  border-left: 1px #E7EBF0 solid;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: inline-flex;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title
+{
+  align-self: stretch;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    display: inline-flex;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header,.rtcp-vod-upload-preview-body-container-rhs-description
+{
+  flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: flex;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-title
+{
+  color: #2A2A4B;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-titlerequired
+{
+  color: rgba(42, 42, 75, 0.50);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-input-container,.rtcp-vod-upload-preview-body-container-rhs-description-content
+{
+    border-radius: 8px;
+    border: 1px #E7EBF0 solid;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.rtcp-vod-title-count, .rtcp-vod-description-count
+{
+  display: flex;
+    color: #9CA3AF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.12px;
+    position: absolute;
+    width: inherit;
+    padding: 12px;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-input-container:focus-within,.rtcp-vod-upload-preview-body-container-rhs-title-header-input-container:focus-visible
+{
+	border-radius: 8px;
+  border: var(--border-color-6);
+  background: #FFF;
+}
+
+textarea:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-input-container:not(:focus-within) > .rtcp-vod-title-count, .rtcp-vod-upload-preview-body-container-rhs-description-content:not(:focus-within) > .rtcp-vod-description-count
+{
+  display: none;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-description-header-input-container:not(:focus-within) > .rtcp-vod-description-count
+{
+  display: none;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-input, .rtcp-vod-upload-preview-body-container-rhs-description-content-textarea
+{
+  border: none;
+  width:380px;
+  padding: 12px;
+  resize: none;
+  word-break:break-all;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-input
+{
+	/* border-radius: 10px; */
+	height: 22px;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-input:focus
+{
+  height: 90px;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-input:focus
+{
+  border: none;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-title-header-input
+{
+	max-height: 48px;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-thumbnail
+{
+  flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    display: flex;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-thumbnail-title
+{
+  flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: flex;
+}
+.rtcp-vod-upload-preview-body-container-rhs-thumbnail-title-header
+{
+  justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    display: inline-flex;
+}
+.rtcp-vod-upload-preview-body-container-rhs-thumbnail-title-header-content
+{
+  color: #2A2A4B;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-thumbnail-iicon
+{
+  width: 24px;
+    height: 24px;
+    padding: 4px;
+    background: linear-gradient(0deg, 0%, 100%), linear-gradient(0deg, #F8F9FB 0%, #F8F9FB 100%);
+    border-radius: 40px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-thumbnail-iicon::before
+{
+  content: "\e9b2";
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-thumbnail-header-subcontent
+{
+  width: 406px;
+    opacity: 0.75;
+    color: #545A6A;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+.rtcp-vod-upload-preview-footer
+{
+  width: 100%;
+  padding:14px 24px;
+  border-top: 1px #E7EBF0 solid;
+  justify-content: flex-end;;
+  display: inline-flex;
+}
+
+.rtcp-vod-upload-preview-footer-upload-btn
+{
+  display: flex;
+width: 100px;
+height: 36px;
+padding: 8px 16px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-radius: 20px;
+background: #377DFF;
+color: white;
+cursor: pointer;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-description-content-textarea{
+  height:92px;
+}
+
+.rtcp-vod-upload-preview-body-container-rhs-description-content-textarea, .rtcp-vod-upload-preview-body-container-rhs-title-header-input {
+ margin: 12px;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.rtcp-vod-upload-body:hover
+{
+  border-radius: 10px;
+  border: 1px dashed #377DFF;
+  background: rgba(55, 125, 255, 0.15);
+  cursor:pointer;
+}
+
+.limit-reached:focus-within, .limit-reached:focus, .limit-reached:focus-visible{
+  border: 1px solid #E42527 !important;
+}
+.limit-reached .rtcp-vod-title-count, .limit-reached .rtcp-vod-description-count{
+  color: #E42527;
+}
+
+.rtcp-vod-container.rtcp-vod-container-hidden .rtcp-grid-video-box 
+{
+  opacity:0.6;
+}
+
+.rtcp-vod-failure-popup,.rtcp-vod-success-popup {
+  position: absolute;
+  top: 90px;
+  background-color: #fff;
+  color: #1F1F1F;
+  box-shadow: 0px 0px 16px 0px rgba(9, 11, 33, 0.10), 0px 2px 4px 0px rgba(9, 11, 33, 0.10);
+  border-radius: 40px;
+  padding: 8px 32px 8px 10px;
+  font-size: 15px;
+  font-weight: 500;
+  animation: slideDown 0.5s ease-out forwards, 
+           slideUp 0.5s ease-in forwards 2.5s;
+  line-height: 22px;
+  gap: 10px;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.conference-demo-alert-banner-slide-down {
+  animation: alert-banner-slide-down 0.5s ease-in-out;
+}
+
+.conference-demo-alert-banner-slide-up {
+  animation: alert-banner-slide-up 0.5s ease-in-out;
+}
+
+.alert-banner-slide-down {
+  animation: alert-banner-slide-down 0.5s ease-in-out;
+}
+
+.alert-banner-slide-up {
+  animation: alert-banner-slide-up 0.5s ease-in-out;
+}
+
+@keyframes alert-banner-slide-down {
+  from {
+     transform: translate(-50%, -300%);
+   }
+   to {
+     transform: translate(-50%, 0);
+   }
+}
+
+@keyframes alert-banner-slide-up {
+  from {
+     transform: translate(-50%, 0);
+  }
+  to {
+     transform: translate(-50%, -300%);
+  }
+}
+
+.rtcp-vod-success-popup-icon 
+{
+      background-color: #31C440;
+}
+.rtcp-vod-failure-popup-icon
+{
+      background-color: #E42527;
+}
+
+.rtcp-vod-failure-popup-icon:before, .rtcp-vod-success-popup-icon:before
+{
+   color: #fff;
+   font-size: 15px;
+ }
+.rtcp-vod-success-popup-icon:before {
+   content: "\e9ac";
+ }
+.rtcp-vod-failure-popup-icon:before{
+   content: "\e997";
+ }
+
+.rtcp-vod-failure-popup-icon {
+  background-color: #E42527;
+}
+.rtcp-vod-success-popup-icon {
+  background-color: #31C440;
+}
+
+.rtcp-vod-failure-popup-icon, .rtcp-vod-success-popup-icon {
+  padding: 7px;
+  border-radius: 20px;
+  width: 32px;
+  height: 32px;
+}
+.rtcp-vod-failure-popup-icon:before, .rtcp-vod-success-popup-icon:before {
+  color: #fff;
+  font-size: 15px;
+}
+
+.rtcp-vod-checkbox-input
+{
+  visibility: hidden;
+}
+
+
+/******** VOD CSS V2 ********/
+
+.rtcp-demo-vod-icon-close:before,  .rtcp-demo-vod-icon-cancel:before{
+    content: '\e997';
+}
+
+.rtcp-vod-upload-btn:before{
+  content: "\e927";
+  padding-right: 8px;
+  font-size: 20px;
+}
+
+.rtcp-demo-vod-icon-minimise:before {
+    content: '-';
+    position: relative;
+    top: -8px;
+    font-size: 45px;
+}
+
+.rtcp-demo-vod-icon-info:before {
+    content: "\e90b";
+}
+.rtcp-demo-vod-icon-copy:before {
+    content: "\e91f";
+}
+
+.rtcp-demo-vod-icon-upload:before {
+    content: "\e915";
+}
+
+.rtcp-demo-vod-icon-processing-begin:before {
+    content: "\e916";
+}
+
+.rtcp-demo-vod-icon-processing:before {
+    content: "\e917";
+}
+
+.rtcp-demo-vod-icon-alert-fill:before
+{
+    content: "\e90a";
+}
+
+.rtcp-demo-vod-icon-upload-preview:before
+{
+    content: "\e92a";
+    font-size: 24px;
+}
+
+.rtcp-demo-vod-icon-more:before{
+    content: "\e9a1";
+}
+
+.rtcp-demo-vod-icon-play:before, .rtcp-demo-vod-icon-view:before{
+  content: "\e9a4";
+}
+
+[rtcp_demo_tooltip]:hover:after {
+    content: attr(rtcp_demo_tooltip);
+    position: absolute;
+    border-radius: 6px;
+    background: #000;
+    display: inline-flex;
+    padding: 6px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'liga' off;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+    white-space: nowrap;
+    transform: translateX(-50%);
+    left: 50%;
+    top: calc(100% + 4px);
+    z-index: 1;
+}
+
+.rtcp-demo-vod-icon-add:before {
+    content: "\e98d";
+}
+
+.rtcp-demo-vod-icon-up:before {
+    content: "\e9af";
+}
+.rtcp-demo-vod-icon-down:before {
+    content: "\e995";
+}
+
+.rtcp-demo-vod-icon-left:before {
+   content: "\e995";
+   transform: rotate(90deg);
+}
+
+.rtcp-demo-vod-icon-right:before {
+   content: "\e995";
+  transform: rotate(270deg);
+}
+
+.rtcp-demo-vod-icon-edit:before {
+    content: "\e996";
+    font-weight: bolder;
+}
+.rtcp-demo-vod-icon-delete:before {
+    content: "\e992";
+}
+
+.rtcp-demo-vod-icon-info-filled:before
+{
+    content: "\e928";
+}
+
+.rtcp-demo-vod-header {
+    display: inline-flex;
+    padding: 17px 24px 17px 32px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E7EBF0;
+    background: #FFF;
+    width: 100%;
+    z-index: 2;
+}
+
+.rtcp-demo-vod-body {
+    background: rgb(0 0 0 / 60%);
+    display: flex;
+    width: 100%;
+    height: calc(100% - 75px);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.rtcp-demo-vod-header-lhs{
+    gap: 8px;
+    display: inline-flex;
+}
+
+.rtcp-demo-header-profile{
+    width: 32px;
+    height: 32px;
+    border-radius: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: url("../vod-owner.svg") lightgray 50% / cover no-repeat;
+}
+    
+.rtcp-demp-vod-header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--font-color-3);
+    
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; /* 123.077% */
+}
+
+.rtcp-demo-vod-header-icon {
+    background: url("../vod.svg") 50% / cover no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+.rtcp-demo-vod-upload-dialog {
+    display: flex;
+    width: 680px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: var(--background-12);
+    overflow: hidden;
+    gap: 22px;
+    padding-bottom: 32px;
+    z-index: 99;
+}
+
+.container-center 
+{
+    position: absolute;
+    top: calc(50% - 48px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rtcp-demo-vod-studio-modal-header-title {
+    color: var(--font-color-13);
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px; /* 160% */
+    flex: 1;
+}
+
+.rtcp-demo-vod-studio-modal-header-close {
+    font-size: 24px;
+    padding: 4px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    /* margin-right: 32px; */
+    margin-right: 24px;
+    gap: 10px;
+}
+
+.rtcp-demo-vod-studio-modal-header-close > * {height: 30px; width: 30px;}
+
+.rtcp-demo-vod-upload-body {
+    padding: 0 32px;
+}
+
+.rtcp-demo-vod-upload-dialog-body-content {
+    border-radius: 10px;
+    border: 1px solid var(--border-color-1);
+    justify-content: center;
+    align-items: center;
+    background: var(--background-11);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+}
+
+.rtcp-demo-vod-upload-dialog-upload {
+    width: 96px;
+    height: 96px;
+    /* color: white; */
+}
+
+.rtcp-demo-vod-body-content-body {
+    opacity: 0.75;
+    color: var(--font-color-11);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+}
+
+.rtcp-demo-vod-body-content-header {
+    color: var(--font-color-10);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+}
+
+.rtcp-demo-vod-body-uplod-content {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rtcp-demo-vod-upload-body {
+    height: 282px;
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+}
+
+.rtcp-demo-vod-upload-dialog-body-content:hover, .drag-drop-active .rtcp-demo-vod-upload-dialog-body-content {
+    border-radius: 10px;
+    border: 1px dashed #377DFF;
+    background: rgba(55, 125, 255, 0.15);
+}
+
+.rtcp-demo-vod-upload-dialog-body-content input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.rtcp-demo-vod-icon-close:hover, .rtcp-demo-vod-icon-minimise:hover {
+    background: var(--background-13);
+    border-radius: 100%;
+}
+
+.rtcp-demo-vod-body-uplod-drop {
+    display: none;
+    color: #3F3F60;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+}
+
+.drag-drop-active .rtcp-demo-vod-body-uplod-drop {display : block;}
+.drag-drop-active .rtcp-demo-vod-upload-dialog-upload, .drag-drop-active .rtcp-demo-vod-body-uplod-content {display : none;}
+
+.rtcp-demo-vod-studio-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border-radius: 10px; */
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    z-index: 99;
+}
+
+.rtcp-demo-vod-studio-modal-header {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color-1);
+    /* background: var(--background-12); */
+    color: var(--font-color-12);
+}
+
+.rtcp-demo-vod-studio-modal-header-text {
+    color: var(--font-color-13);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px; /* 160% */
+    height: 32px;
+    width: 460px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.rtcp-demo-vod-studio-modal-header .rtcp-demo-vod-studio-modal-header-close {
+    margin-right: 24px;
+}
+
+.rtcp-demo-video-cont-upload-footer {
+    border-top: 1px solid var(--border-color-1);
+    background: var(--background-14);
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 14px 24px;
+    width: 100%;
+    gap: 24px;
+}
+
+.rtcp-demo-video-cont-upload-footer-rhs-next {
+    border-radius: 20px;
+    background: #377DFF;
+    padding: 8px 16px;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: 0.14px;
+    cursor: pointer;
+}
+
+.rtcp-demo-video-cont-upload-footer-rhs-next:hover {
+    border-radius: 20px;
+    background: #0E48BF;
+}
+
+.rtcp-demo-video-cont-upload-footer-rhs-next.disabled {
+    background: #E7EBF0 !important;
+    color: #9CA3AF;
+    cursor: default;
+    pointer-events: none;
+}
+
+.rtcp-demo-vod-studio-modal-body-rhs {
+    padding: 24px 22px 50px 24px;
+    gap: 20px;
+    display: flex;
+    width: 452px;
+    flex-direction: column;
+    /* position: relative; */
+}
+
+.rtcp-demo-vod-studio-modal-body-rhs-title {
+  gap: 8px;
+  display: flex;
+  color: var(--font-color-9);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+  flex-direction: column;
+}
+
+.rtcp-demo-vod-studio-modal-body-rhs-title .note {
+  color: var(--font-color-14);
+}
+
+.rtcp-demo-vod-studio-modal-body-rhs-description-title{
+  display: flex; 
+  gap: 1px; 
+  color: var(--font-color-9);
+  font-size: 14px; 
+  font-style: normal; 
+  font-weight: 500; 
+  line-height: 20px;
+}
+
+
+.rtcp-demo-vod-studio-modal-body-rhs-description {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.rtcp-demo-vod-studio-modal-body-rhs-thumbnail {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+span.rtcp-demo-vod-icon-info:hover {
+    opacity: 1;
+}
+
+.rtcp-demo-vod-studio-modal-body {
+    display: flex;
+    position: relative;
+}
+
+.rtcp-demo-vod-video-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    flex-shrink: 1;
+    position: relative;
+    height: 356px;
+    background: black;
+    border-radius: 4px;
+}
+
+[modal="preview"] .rtcp-demo-vod-video-cont {height: 100%;}
+
+.rtcp-demo-vod-studio-modal .rtcp-grid-video-status-container {height: 356px; border-radius: 4px; position: absolute; z-index: 2;}
+
+#rtcp-demo-vod-studio-modal-player {
+  /* background: #000;  */
+  aspect-ratio: 16/9; 
+  width: 100%; 
+  display: flex; 
+  position: relative; 
+  border-radius: 4px; 
+  overflow: hidden;
+  z-index: 1;
+}
+
+.rtcp-demo-upload-progress-bar{
+  width: 100%; 
+  position: absolute; 
+  height: 4px; 
+  bottom: 0px;
+  left: 0px;
+}
+
+.rtcp-demo-upload-progress-bar > * {
+  height: 100%;
+}
+
+.rtcp-demo-upload-progress-bar .progress-state {
+  background: #2ECC71;
+  transition: width 0.9s ease;
+  width: 0%;
+  position: absolute;
+  top: 0px;
+}
+
+.rtcp-demo-upload-progress-bar .inactive-state {
+  background: #ffffff80;
+}
+
+.rtcp-demo-vod-studio-modal-content {
+    background: var(--background-14);
+    /* display: flex; */
+    display: inline-grid;
+    border-radius: 10px;
+    overflow: auto;
+    width: 100%;
+    /* max-width: calc(100% - 145px - 145px); */
+    width: 1150px;
+}
+
+[modal='inVideo'] .rtcp-demo-vod-studio-modal-content {transition: width 1s ease-in-out;}
+
+[modal='preview'] .rtcp-demo-vod-studio-modal-content, .rhs-inactive[modal='inVideo'] .rtcp-demo-vod-studio-modal-content {width: 800px; overflow: unset;}
+
+.rtcp-demo-vod-studio-modal-body-rhs-videolink {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ellips {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* .rtcp-demo-vod-upload-state-video */
+.rtcp-grid-video-status { 
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    color: #FFF;
+     /* 125% */
+    gap: 12px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+}
+
+.rtcp-grid-video-list .rtcp-grid-video-status {
+  top: 45%;
+}
+
+.rtcp-demo-vod-studio-modal .rtcp-grid-video-status {
+  font-size: 18px;
+}
+
+.rtcp-grid-video-box .rtcp-grid-video-status{
+  gap: 6px;
+} 
+
+.rtcp-demo-vod-studio-modal-title-text {
+    border-radius: 8px;
+    /* border: 1px solid var(--border-color-1); */
+    padding: 12px;
+    width: 100%;
+    height: 64px;
+    overflow: hidden;
+    color: var(--font-color-13);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    resize: none;
+    line-height: 20px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    /* background: var(--background-15); */
+    overflow: auto;
+}
+
+.rtcp-demo-vod-studio-modal-description-text {
+    border-radius: 8px;
+    /* border: 1px solid rgb(231, 235, 240); */
+    /* border: 1px solid var(--border-color-1); */
+    padding: 12px;
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+    color: var(--font-color-13);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    resize: none;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    /* overflow-y: scroll; */
+    /* background: var(--background-15); */
+}
+/* .rtcp-demo-vod-studio-modal-description-text:focus-visible {
+    border-radius: 8px;
+    border: var(--border-color-6);
+    background: #FFF;
+    outline: none;
+} */
+
+/* .rtcp-demo-vod-studio-modal-title-text:focus-visible {
+    border-radius: 8px;
+    border: var(--border-color-6);
+    background: #FFF;
+    box-shadow: 0px 2px 0px 0px rgba(55, 125, 255, 0.15);
+    outline: none;
+} */
+
+.rtcp-demo-vod-studio-modal-text-count {
+    color: #9CA3AF;
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.12px;
+    position: absolute;
+    /* bottom: 12px; */
+    bottom: -20px;
+    right: 12px;
+}
+
+.rtcp-demo-vod-studio-modal-body-rhs-title-cont {
+    position: relative;
+}
+
+.rtcp-demo-vod-studio-modal-body-rhs-description-cont {
+    position: relative;
+}
+
+[input_error_status] .rtcp-demo-vod-studio-modal-text-count {display: block;color: #F43F5E;}
+
+[input_error_status] .rtcp-demo-vod-studio-modal-title-text {
+    border-radius: 8px;
+    border: 1px solid #F43F5E;
+    background: #FFF;
+    box-shadow: 0px 2px 0px 0px rgba(244, 63, 94, 0.15);
+}
+
+[input_error_status] .rtcp-demo-vod-studio-modal-text-count {
+    color: #F43F5E;
+    display: block;
+}
+
+[input_error_status] .rtcp-demo-vod-studio-modal-description-text {
+    border-radius: 8px;
+    border: 1px solid #F43F5E;
+    background: #FFF;
+    box-shadow: 0px 2px 0px 0px rgba(244, 63, 94, 0.15);
+}
+
+textarea.rtcp-demo-vod-studio-modal-description-text::-webkit-scrollbar {
+    width: 12px;
+}
+
+textarea.rtcp-demo-vod-studio-modal-description-text::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #9ca3af80;
+    border: 4px solid #fff;
+}
+
+.rtcp-demo-vod-upload-link-copy-icon {
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 40px;
+    background: #F8F9FB;
+    cursor: pointer;
+    color: #545a6a80;
+    position: relative;
+}
+
+.rtcp-demo-vod-upload-link-copy-text {
+    color: #377DFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    cursor: pointer;
+    width: 304px;
+}
+
+.rtcp-demo-vod-upload-link-copy-icon:hover {
+    background: #377DFF1A;
+    color: #377DFF;
+}
+
+.rtcp-demo-vod-upload-link-copy-text:hover div {
+     /* 133.333% */
+     background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #377DFF;
+}
+
+.rtcp-demo-vod-banner {
+    position: absolute;
+    display: inline-flex;
+    top: -90px;
+    z-index: 101;
+    /* text-align: center; */
+    /* align-items: center; */
+    gap: 10px;
+    align-content: center;
+    border-radius: 40px;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(9, 11, 33, 0.10), 0px 0px 16px 0px rgba(9, 11, 33, 0.10);
+    padding: 8px 32px 8px 10px;
+    /* animation: rtcp-demo-vod-banner-slidedown 1s ease-in-out; */
+    transition: top 1s ease-in-out;
+    transform: translate(-50%, -0px);
+    left: 50%;
+}
+
+.rtcp-demo-vod-banner-text {
+    color: #1F1F1F;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 146.667% */
+    display: flex;
+    align-items: center;
+}
+
+.rtcp-demo-vod-banner-icon {
+    height: 32px;
+    padding: 7px;
+    width: 32px;
+}
+
+.rtcp-demo-vod-banner .rtcp-demo-vod-icon-banner {width: 40px;}
+
+.rtcp-demo-vod-banner[status="error"] .rtcp-demo-vod-icon-banner:before {
+    content: "\e90a";
+}
+
+.rtcp-demo-vod-banner[status="error"] .rtcp-demo-vod-icon-banner {
+    border-radius: 20px;
+    background: #F43F5E;
+    color: #FFFFFF;
+}
+
+.rtcp-demo-vod-banner[status="success"] .rtcp-demo-vod-icon-banner:before {
+    content: "\e9ac";
+}
+
+.rtcp-demo-vod-banner[status="success"] .rtcp-demo-vod-icon-banner {
+    border-radius: 20px;
+    background: #31C440;
+    color: #FFFFFF;
+}
+
+.rtcp-demo-vod-banner[status="warning"] .rtcp-demo-vod-icon-banner:before {
+    content: "\e9ac";
+}
+
+.rtcp-demo-vod-banner[status="warning"] .rtcp-demo-vod-icon-banner {
+    border-radius: 20px;
+    background: #31C440;
+    color: #FFFFFF;
+}
+
+.rtcp-demo-vod-icon-banner {
+    font-size: 18px;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rtcp-demo-thumbnailhover-cont {
+    display: inline-flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 6px;
+    background: #000;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+    /* transform: translate(-50%, -50%); */
+    position: absolute;
+    bottom: calc(100% + 8px);
+    transform: translateX(-28%);
+    left: 0;
+    color: #FFF;
+    font-feature-settings: 'liga' off;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+    display: none;
+}
+
+.rtcp-demo-vod-upload-thumbnail-info-cont:hover .rtcp-demo-thumbnailhover-cont {
+    display: flex;
+}
+
+.rtcp-demo-vod-upload-thumbnail-info-cont {
+    display: flex;
+    gap: 1px;
+    border-radius: 40px;
+    background: #F8F9FB;
+    position: relative;
+}
+
+.rtcp-demo-vod-upload-thumbnail-sec {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    height: 72px;
+}
+
+.rtcp-demo-vod-upload-thumbnail-sec > *
+{
+    width : 128px;
+}
+
+.rtcp-demp-vod-upload-thumbnail-add-sec {
+    /* padding: 6px 21px 10px 22px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    outline: 1px dashed #9CA3AF;
+    background: rgba(248, 249, 251, 0.80);
+    gap: 2px;
+    cursor: pointer;
+}
+
+.rtcp-demo-vod-thumbnail-loading-sec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    outline: 1px solid rgba(156, 163, 175, 0.20);
+    background: rgba(248, 249, 251, 0.60);
+    /* padding: 0px 35px; */
+    justify-content: center;
+}
+
+.rtcp-demo-vod-thumbnail-loaded-sec {
+    width: 128px;
+    height: 72px;
+    border-radius: 4px;
+    /* border: 2px solid #377DFF; */
+    /* background: rgba(55, 125, 255, 0.15); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+    /* border: 2px solid transparent; */
+    position: relative;
+}
+
+.rtcp-demo-vod-thumbnail-loaded-sec:hover {
+    box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #377DFF;
+}
+
+.rtcp-demo-vod-thumbnail-loaded-sec[status="selected"] {
+    box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #377DFF;
+}
+
+.rtcp-demp-vod-upload-thumbnail-add-sec:hover {
+    border-radius: 4px;
+    outline: 1px dashed #377DFF;
+    background: rgba(55, 125, 255, 0.15);
+}
+
+.rtcp-demp-vod-upload-thumbnail-uploading-sec {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 128px;
+    height: 72px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.rtcp-demo-vod-thumbnail-more-option-cont {
+    display: none;
+    position: absolute;
+    padding: 4px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    top: 4px;
+    right: 4px;
+}
+
+.rtcp-demo-vod-thumbnail-loaded-sec:hover .rtcp-demo-vod-thumbnail-more-option-cont,.rtcp-demo-vod-add-annotation-modal-thumbnail-sec-content-img:hover .rtcp-demo-vod-thumbnail-more-option-cont{
+    display: flex;
+}
+
+.rtcp-demo-vod-thumbnail-options-cont {
+    display: none;
+    position: absolute;
+    padding: 4px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    top: calc(100% + 4px);
+    width: 120px;
+    z-index: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: #000;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+span.rtcp-demo-vod-thumbnail-more-option {
+    padding: 8px;
+    color: #FFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 133.333% */
+    opacity: 0.7;
+    width: 100%;
+}
+
+span.rtcp-demo-vod-thumbnail-more-option:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.rtcp-demo-vod-thumbnail-options-cont[status="active"] {
+    display: flex;
+}
+
+.rtcp-demo-vod-studio-modal-header-cont {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    /* width: 100%; */
+    border-radius: 10px;
+    justify-content: space-between;
+    position: relative;
+    height: 700px;
+    width: 1150px;
+}
+
+.rtcp-demo-vod-icon-close.rtcp-demo-vod-video-cont-close-icon {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.rtcp-demo-vod-studio-modal-footer {
+    padding: 14px 24px;
+    display: inline-flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid #E7EBF0;
+}
+
+.rhs-disable .rtcp-demo-vod-studio-modal-footer {
+    display: none;
+}
+
+.rtcp-demo-vod-video-cont-detail-back {
+    color: #377DFF;
+    text-align: right;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px; /* 212.5% */
+    letter-spacing: 0.16px;
+    cursor: pointer;
+}
+
+.rtcp-demo-vod-video-cont-detail-next {
+    display: flex;
+    /* width: 100px; */
+    height: 36px;
+    padding: 8px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 20px;
+    background: #377DFF;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: 0.14px;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.disabled[purpose], .rtcp-demo-vod-add-chapters-modal-body-footer-sec-actions-cont-save.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.rtcp-demo-vod-studio-modal-body {
+    height: 100%;
+    display: inline-flex;
+}
+
+.rtcp-demo-vod-studio-modal-body-lhs {
+    display: flex;
+    flex: 1;
+    background: var(--background-15);
+    justify-content: center;
+    position: relative;
+    transition: width 1s ease-in-out, max-width 1s ease-in-out, margin-right 1s ease-in-out;
+    max-width: 100%;
+    padding: 32px;
+    align-items: center;
+}
+
+.rtcp-demo-vod-studio-modal-vid {
+    display: flex;
+    aspect-ratio: 16/9;
+    margin: 16px 48px;
+    /* align-items: center; */
+    /* justify-content: center; */
+    background-image: url("img/video.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    max-width: calc(100% - 48px - 48px);
+    max-height: calc(100% - 16px - 16px);
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+[modal='inVideo'] .rtcp-demo-vod-studio-modal-body-rhs {
+    display: flex;
+    flex-direction: column;
+    width: 452px;
+    padding: 24px 0px;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: width 1s ease-in-out;
+    /* transform: translateX(-24px); */
+}
+
+.rhs-inactive[modal='inVideo'] .rtcp-demo-vod-studio-modal-body-rhs {width: 0px;}
+
+[modal='preview'] .rtcp-demo-vod-studio-modal-body-rhs {display: none;}
+
+.rtcp-demp-vod-video-cont-add-text-cont {
+    color: var(--font-color-11);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 133.333% */
+}
+
+.rtcp-demp-vod-video-cont-add-title-cont {
+    margin-left: 4px;
+    color: var(--font-color-9);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    /*line-height: 20px; */ /* 142.857% */
+    line-height: 19px;
+}
+
+.rtcp-demp-vod-video-cont-add-button-cont {
+    flex-shrink: 0;
+    padding: 4px;
+    font-size: 16px;
+    border-radius: 30px;
+    background: var(--background-4);
+    width: 24px;
+    height: 24px;
+}
+
+.rtcp-demp-vod-add-chapter-sec {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    /* cursor: pointer; */
+    padding: 0px 24px;
+}
+
+.rtcp-demp-vod-add-chapter-btn {
+  gap: 8px; 
+  cursor:pointer; 
+}
+
+.rtcp-demp-vod-add-chapter-btn:hover .rtcp-demp-vod-video-cont-add-text-cont {
+    color: var(--font-color-15);
+}
+
+.rtcp-demp-vod-add-chapter-btn:hover .rtcp-demo-vod-icon-add.rtcp-demp-vod-video-cont-add-button-cont {
+    background: var(--background-16);
+    color: var(--font-color-15);;
+}
+
+.rtcp-demo-vod-add-chapters-modal, .rtcp-demo-vod-add-annotation-modal,.rtcp-demo-vod-add-endcard-modal {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--background-39);
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body, .rtcp-demo-vod-add-annotation-modal-body {
+    width: 430px;
+    display: flex;
+    padding: 12px;
+    gap: 12px;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid var(--border-color-13);
+    background: var( --background-42);
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-sec {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-text {
+    color: var(--font-color-9);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    display: flex;
+    gap: 4px;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-text .chapter-title-required {
+  color: var(--font-color-14);
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-textarea textarea {
+    width: 100%;
+    height: 64px;
+    border-radius: 8px;
+    /* border: 1px solid #E7EBF0;
+    background: #FFF; */
+    padding: 12px;
+    resize: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+    outline: none;
+    overflow-y: scroll;
+}
+
+/* .rtcp-demo-vod-add-chapters-modal-body-title-textarea textarea:focus {
+    border-radius: 8px;
+    border: var(--border-color-6);
+    background: var(--background-2);
+    box-shadow: 0px 2px 0px 0px rgba(55, 125, 255, 0.15);
+} */
+
+span.rtcp-demo-vod-add-chapters-modal-body-textarea-counter {
+    position: absolute;
+    bottom: 12px;
+    color: #9CA3AF;
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.12px;
+    right: 12px;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-textarea {
+    position: relative;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-textarea[input_error_status] textarea, 
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-timer[input_error_status], 
+.rtcp-self-commenter-box[input_error_status], .rtcp-vod-viewers-comment[input_error_status] {
+    border-radius: 8px;
+    border: 1px solid #F43F5E !important;
+    background: var(--background-1);
+    box-shadow: 0px 2px 0px 0px rgba(244, 63, 94, 0.15) !important;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-timer[status="error"] > * {
+    background: #FFF;
+    color: #F43F5E;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-textarea[status="error"] .rtcp-demo-vod-add-chapters-modal-body-textarea-counter{
+    color: #F43F5E;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-description-sec {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-timer {
+    border-radius: 8px;
+    border: 1px solid var(--border-color-11);
+    background: var(--background-40);
+    display: flex;
+    padding: 10px 14px;
+    justify-content: center;
+    align-items: center;
+    /* gap: 10px; */
+    color: #377DFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 114.286% */
+    letter-spacing: 0.28px;
+    width: 10ch;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-timer input {
+    width: 2ch;
+    padding: 0px;
+    border: none;
+    outline: none;
+    background: var(--background-40);
+    place-items: center;
+    color: var(--font-color-1);
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-timer:focus-within {
+  background: var(--background-41);
+  border : 1px solid var(--border-color-12);
+  opacity: 1;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-timer:focus-within > * {
+  background: var(--background-41);
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-actions-cont {
+    display: flex;
+    gap: 24px;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-actions-cont-cancel {
+    color: var(--font-color-20);
+    text-align: right;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px; /* 212.5% */
+    letter-spacing: 0.16px;
+    cursor: pointer;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-actions-cont-save {
+    border-radius: 20px;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: 0.14px;
+    padding: 8px 16px;
+    opacity: 1;
+    background: #377DFF;
+    cursor: pointer;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-actions-cont-save:hover {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #377DFF;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-actions-cont-save.disabled:hover{
+    background: #377DFF;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-textarea textarea::-webkit-scrollbar {
+    width: 12px;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-textarea textarea::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #9ca3af80;
+    border: 4px solid #fff;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-actions-cont-cancel:hover {
+    color: var(--font-color-21);
+}
+
+.rtcp-demp-vod-add-chapter-elem-lhs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.rtcp-demp-vod-add-chapter-elem-time {
+    overflow: hidden;
+    color: #377DFF;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+}
+
+.rtcp-demp-vod-add-chapter-elem-sep {
+    border-radius: 10px;
+    background: #E7EBF0;
+    width: 4px;
+    height: 4px;
+}
+
+.rtcp-demp-vod-add-chapter-elem-title {
+    overflow: hidden;
+    color: #2A2A4B;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+}
+
+.rtcp-demp-vod-add-chapter-elem {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding: 10px 24px;
+    flex-direction: column;
+    /* transition: gap .75s ease-in-out; */
+    /* gap: 0px; */
+}
+
+.rtcp-demo-vod-video-cont-chapter-cont {
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rtcp-demo-vod-video-cont-vertical-sep {
+    width: 1px;
+    height: 16px;
+    background: #9CA3AF;
+}
+
+.rtcp-demp-vod-add-chapter-elem-rhs {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: rgb(84 90 106 / 75%);
+}
+
+.rtcp-demp-vod-add-chapter-elem-rhs .rtcp-demo-vod-icon-delete:hover {
+    color: #F43F5E;
+}
+
+.rtcp-demp-vod-add-chapter-elem-rhs .rtcp-demo-vod-icon-edit:hover {
+    color: #545A6A;
+}
+
+.rtcp-demp-vod-add-chapter-elem-rhs .rtcp-demo-vod-toggle-description {
+    cursor: pointer;
+    position: relative;
+}
+
+.rtcp-demp-vod-add-chapter-elem-rhs .rtcp-demo-vod-icon-toggle-description {
+    transform: none;
+    transition: transform .6s ease-in-out;
+}
+
+.rtcp-demp-vod-add-chapter-elem.desc-active .rtcp-demp-vod-add-chapter-elem-rhs .rtcp-demo-vod-icon-toggle-description{
+    transform: rotate(180deg);
+    /* will-change: transform; */
+}
+
+.rtcp-demp-vod-add-chapter-elem-rhs .rtcp-demo-vod-icon-edit {
+    cursor: pointer;
+    position: relative;
+}
+
+.rtcp-demp-vod-add-chapter-elem-rhs .rtcp-demo-vod-icon-delete {
+    cursor: pointer;
+    position: relative;
+}
+
+.rtcp-demp-vod-add-chapter-elem:hover {
+    background: rgba(156, 163, 175, 0.25);
+    line-height: normal;
+}
+
+.rtcp-demp-vod-add-chapter-elem:hover .rtcp-demp-vod-add-chapter-elem-rhs {
+    display: flex;
+}
+
+.rtcp-demp-vod-add-chapter-elem-rhs .rtcp-demo-vod-icon-toggle-description:hover {
+    color: #545A6A;
+}
+
+.rtcp-demp-vod-add-chapter-elem-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.rtcp-demp-vod-add-chapter-elem-body {
+    overflow: hidden;
+    color: var(--font-color-3);
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 171.429% */
+    transition: max-height .75s ease-in-out;
+    /* transform: scaleY(1); */
+    /* transform-origin: top; */
+    /* visibility: hidden; */
+    opacity: 1;
+    max-height: 0px;
+    width: 100%;
+    /* white-space: nowrap; */
+    /* overflow-wrap: break-word; */
+}
+
+.rtcp-demp-vod-add-chapter-elem-description {margin-top: 10px;}
+
+
+.rtcp-demp-vod-add-chapter-elem.desc-active .rtcp-demp-vod-add-chapter-elem-body {
+    max-height: 120px;
+    /* opacity: 1; */
+    /* transform: scaleY(1); */
+}
+
+.rtcp-demp-vod-add-chapter-elem .rtcp-demo-vod-icon-toggle-description:before {
+    content: "\e995";
+}
+
+.rtcp-demo-vod-studio-modal-vid-rhs-slider {
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+    transform: translateX(50%);
+}
+
+.rhs-disable .rtcp-demo-vod-studio-modal-vid-rhs-slider {display: none;}
+
+.rtcp-demo-vod-icon-video-cont-upload-modal-vid-rhs-slider-button {
+    border-radius: 11px;
+    /* border: 1px solid #E7EBF0; */
+    /* background: #FFF; */
+    display: flex;
+    width: 16px;
+    height: 32px;
+    padding: 6px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-size: 14px;
+    cursor: pointer;
+    background: var(--background-1);
+    border: 1px solid var(--border-color-1);
+    color: var(--font-color-13);
+}
+
+.rhs-inactive[modal="inVideo"] .rtcp-demo-vod-icon-video-cont-upload-modal-vid-rhs-slider-button:before {
+    content: "\e995";
+    transform: rotate(90deg);
+}
+
+.rtcp-demo-vod-icon-video-cont-upload-modal-vid-rhs-slider-button:before {
+    content: "\e995";
+    transform: rotate(270deg);
+    transition: transform 1s ease-in-out;
+}
+
+.rhs-active .rtcp-demo-vod-studio-modal-vid-rhs-slider .rtcp-demo-vod-icon-video-cont-upload-modal-vid-rhs-slider-button:before {transform: rotate(270deg);}
+
+.rtcp-demo-vod-modal-loader {
+    position: absolute;
+    width: 100%;
+    /* height: calc( 100% - 64px); */
+    display: flex;
+    background: var(--background-1);
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    /* top: 64px; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rtcp-demo-vod-modal-loader-sec {
+    display: flex;
+    gap: 16px;
+}
+
+.rtcp-demo-vod-modal-loader-cont-dot {
+    width: 20px;
+    height: 20px;
+    border: 3px solid currentColor;
+    border-radius: 50%;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+
+.rtcp-demo-vod-modal-loader-cont-dot:nth-child(1) {
+    color: red;
+    animation-delay: 0s;
+}
+
+.rtcp-demo-vod-modal-loader-cont-dot:nth-child(2) {
+    color: green;
+    animation-delay: 0.1s;
+}
+
+.rtcp-demo-vod-modal-loader-cont-dot:nth-child(3) {
+    color: blue;
+    animation-delay: 0.2s;
+}
+
+.rtcp-demo-vod-modal-loader-cont-dot:nth-child(4) {
+    color: orange;
+    animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-12px);
+    opacity: 1;
+  }
+}
+
+input.rtcp-demo-vod-add-chapters-modal-body-footer-sec-timer:focus {
+    border: var(--border-color-6);
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-link {
+    position: relative;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-title-link textarea {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #E7EBF0;
+    background: #FFF;
+    padding: 12px;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    color: #377DFF;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+}
+
+.rtcp-demo-vod-add-annotation-modal-thumbnail-sec {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 228px;
+    border-radius: 4px;
+    border: 1px dashed #9CA3AF;
+    background: rgba(248, 249, 251, 0.80);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.80);
+    border-radius: 34px;
+    max-width: 24px;
+    transition: max-width .5s ease-in-out,top .5s ease-in-out, right .5s ease-in-out;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-container-icon {
+    /* padding: 4px; */
+    font-size: 16px;
+    /* border-radius: 34px; */
+    /* background: rgba(0, 0, 0, 0.80); */
+    /* color: #fff; */
+    /* cursor: pointer; */
+}
+
+.rtcp-demo-vod-add-annotation-modal-thumbnail-sec-bgimg {
+    /* background: url("img/thumbnail.png"); */
+    width: 54px;
+    height: 54px;
+}
+
+.rtcp-demo-vod-add-annotation-modal-thumbnail-sec-bg-text {
+    color: rgba(84, 90, 106, 0.75);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px; /* 128.571% */
+}
+
+.rtcp-demo-vod-add-annotation-modal-thumbnail-sec-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rtcp-demo-vod-add-annotation-modal-thumbnail-sec:hover {
+    border-radius: 4px;
+    border: 1px dashed #377DFF;
+    background: rgba(55, 125, 255, 0.15);
+}
+
+.rtcp-demo-vod-add-annotation-modal-thumbnail-sec-content-img {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    gap: 12px;
+    flex-direction: column;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-container {
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 0px;
+    padding: 4px;
+    transition: gap .5s ease-in-out;
+    justify-content: space-between;
+}
+
+span.rtcp-demo-vod-studio-modal-vid-annotation-button-container-text {
+    color: #FFF;
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 14px; /* 116.667% */
+    /* padding-left: 4px; */
+    /* display: none; */
+    /* max-width: 0; */
+    overflow: hidden;
+    /* transition: all .75s ease-in-out; */
+    white-space: nowrap;
+    transition: padding-left .5s ease-in-out;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec[type="multiple"] .rtcp-demo-vod-studio-modal-vid-annotation-button-container {
+    gap: 4px;
+    max-width: 324px;
+    padding: 6px 6px 6px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+span.rtcp-demo-vod-studio-modal-vid-annotation-button-container-text:hover {
+    color: #FFF;
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 14px; /* 116.667% */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.rtcp-demp-vod-annotaion-cont-video-sec-title {
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    opacity: .75;
+}
+
+.rtcp-demp-vod-annotaion-cont-video-elem {
+    padding: 10px;
+    gap: 8px;
+    height: 138px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.rtcp-demp-vod-annotaion-cont-video-sec {
+    /* background: #000; */
+    overflow-y: scroll;
+    height: calc(100% - 38px);
+    /* display: none; */
+}
+
+.rtcp-demp-vod-annotaion-cont-video-sec-thumbnail {
+    border-radius: 4px;
+    background: url("img/video.jpg") lightgray -3.311px -4.989px / 105.34% 111.231% no-repeat;
+    /* width: 100%; */
+    /* height: 100%; */
+    width: 124px;
+    height: 70px;
+}
+
+.rtcp-demp-vod-annotaion-cont-video-elem:hover {
+    border-left: 2px solid #377DFF;
+    background: rgba(255, 255, 255, 0.20);
+}
+
+.rtcp-demp-vod-annotaion-cont-video-elem:hover .rtcp-demp-vod-annotaion-cont-video-sec-title {
+    opacity: 1;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec[type="multiple"]:hover .rtcp-demp-vod-annotaion-cont-video-sec {
+    display: block;
+    flex-direction: column;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec[type="multiple"].rtcp-demo-vod-studio-modal-vid-annotation-button-container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    background: #000;
+    border-radius: 0;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec[type="multiple"] {
+    right: 0px;
+    top: 0;
+    /* height: 100%; */
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec:hover .rtcp-demo-vod-studio-modal-vid-annotation-button-container {
+    gap: 4px;
+    padding-left: 4px;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec:hover span.rtcp-demo-vod-studio-modal-vid-annotation-button-container-text {
+    padding-left: 4px;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec:hover {
+    max-width: 350px;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec[type="multiple"]:hover {
+    border-radius: 0;
+    top: 0;
+    right: 0;
+    width: 144px;
+    height: 100%;
+}
+
+.rtcp-demo-vod-add-chapters-modal-body-footer-sec-time {
+    display: flex;
+    gap: 8px;
+}
+
+.rtcp-demo-vod-endcard-placement-sec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 48px 40px;
+}
+
+.rtcp-demo-vod-endcard-placement-sec-bg {
+    /* opacity: 0.5; */
+    background: linear-gradient(to right, transparent 50%, #377dff80 50%);
+    background-size: 40px;
+    background-repeat: repeat-x;
+    width: 100%;
+    border: var(--border-color-6);
+}
+
+.rtcp-demo-vod-endcard-placement-sec-img {
+    border: 1px solid #FFF;
+    background: #161616;
+    cursor: all-scroll;
+}
+
+.rtcp-demo-vod-endcard-placement-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #FFF;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: nwse-resize;
+}
+
+span.rtcp-demo-vod-endcard-placement-sec-img-title {
+    color: #FFF;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.20);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 114.286% */
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.rtcp-demp-vod-endcard-thumbnail-loading {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
+    border: 4px solid rgba(255, 255, 255, 0.1); /* outer ring */
+    border-top: 4px solid white;               /* spinning arc */
+    border-radius: 50%;
+    animation: rtcp-demp-vod-spinner 1s linear infinite;
+    box-sizing: border-box;
+}
+
+@keyframes rtcp-demp-vod-spinner {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+.rtcp-demo-vod-endcard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 48px 40px;
+    position: relative;
+}
+
+.rtcp-demo-vod-end-card-elem {
+    display: flex;
+    position: absolute;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    /* background: url(<path-to-image>) lightgray 50% / cover no-repeat; */
+    /* background-color: lightgrey; */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+img.rtcp-demo-vod-end-card-elem-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.rtcp-demo-vod-endcard-time {
+    padding: 4px;
+    right: 8px;
+    bottom: 8px;
+    position: absolute;
+    display: flex;
+    border-radius: 4px;
+    background: rgba(0, 0, 0);
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px; /* 133.333% */
+    opacity: .85;
+}
+
+.rtcp-demo-vod-endcard-title-sec {
+    height: 60px;
+    overflow: hidden;
+    color: #FFF;
+    text-overflow: ellipsis;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.20);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 123.077% */
+    width: 100%;
+    position: absolute;
+    padding: 8px;
+    background: linear-gradient(180deg, #000 -46.67%, rgba(0, 0, 0, 0.00) 91.67%);
+}
+
+.rtcp-demo-vod-end-card-elem:hover {
+    border: 1px solid #FFF;
+}
+
+.rtcp-demo-vod-endcard:has(.rtcp-demo-vod-end-card-elem:hover) {
+    background-color: rgb(0 0 0 / 30%);
+}
+
+.rtcp-demo-vod-video-cont-annotation-cont {
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rtcp-demo-vod-video-cont-endcard-cont {
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rtcp-demo-vod-icon-close.rtcp-demo-vod-studio-modal-vid-annotation-button-container-icon:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec[type="multiple"]:hover .rtcp-demo-vod-studio-modal-vid-annotation-button-container-icon:before {
+    content: '\e997' !important;
+}
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec[type="multiple"]:hover .rtcp-demo-vod-studio-modal-vid-annotation-button-container-icon:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 40px;
+}
+
+.rtcp-demo-vod-rhs-module-sep {
+    width: 320px;
+    height: 1px;
+    flex-shrink: 0;
+    background: #E7EBF0;
+    left: 67px;
+    position: relative;
+    margin-top: 6;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec-multi .rtcp-demo-vod-studio-modal-vid-annotation-button-container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    background: #000;
+}
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec-multi {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.80);
+    max-width: 24px;
+    transition: max-width .5s ease-in-out, top .5s ease-in-out, right .5s ease-in-out;
+    max-width: 0px;
+    height: 100%;
+    width: 144px;
+}
+
+.rtcp-demo-vod-studio-modal-vid-annotation-button-sec-multi[type="multiple"] .rtcp-demo-vod-studio-modal-vid-annotation-button-container-icon::before {
+    content: "\e997";
+}
+
+/** Grid container overlay **/
+
+.rtcp-grid-video-overlay-options{
+  display: none;
+  border-radius: 8px;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  border-radius: 0px;
+}
+
+[more_opt="edit"] .rtcp-grid-video-edit, [more_opt="view"] .rtcp-grid-video-view {
+  background: #377dff !important;
+}
+
+.rtcp-grid-video-container .rtcp-grid-video-box:hover .rtcp-grid-video-overlay-options, 
+.more-opt-active .rtcp-grid-video-overlay-options {
+  display: block;
+}
+
+.rtcp-grid-vod-main-options {
+  width: 100%;
+  position: absolute;
+  top: 32px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+}
+
+.rtcp-grid-video-overlay-bg {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  inset: 0;
+  /* background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%); */
+  background : linear-gradient(180deg, transparent 25%, rgb(0 0 0 / 53%) 90%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.rtcp-grid-video-items[category="completed"] .rtcp-grid-video-overlay-bg {
+  display: block;
+}
+
+.rtcp-vod-viewerpage-nextvideos-list .rtcp-grid-video-box.playing {
+  /* background: #1e2123; */
+  /* background: #343638ab; */
+  pointer-events: none;
+}
+
+.rtcp-vod-viewerpage-nextvideos-list .rtcp-grid-video-box.playing .rtcp-grid-video-box-wrapper {
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); */
+  /* border: 1px solid #27272c75; */
+  border: 2px solid #3b3e57;
+}
+
+.rtcp-vod-viewerpage-nextvideos-list .rtcp-grid-video-box.playing .rtcp-grid-video-box-wrapper:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000c9;
+    z-index: 3;
+}
+
+.rtcp-grid-vod-main-options > * {
+    width: 40px;
+    height: 40px;
+    background: var(--background-21);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); */
+    box-shadow: 0 3px 12px rgb(0 0 0 / 21%);
+    color: var(--font-color-16);
+    font-size: 26px;
+}
+
+.rtcp-grid-vod-main-options .rtcp-grid-video-edit {
+    font-size: 20px;
+}
+
+.rtcp-vod-container .rtcp-grid-vod-main-options > div:hover {
+    background: var(--background-22);
+    transform: scale(1.2);
+    color: var(--font-color-15);
+}
+
+.rtcp-vod-viewerpage-outercontainer .rtcp-grid-video-view {
+  display: none !important;
+}
+
+.rtcp-grid-video-details .rtcp-grid-video-edit {
+  border-radius: 50%;
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  font-size: 14px;
+  right: 0px;
+  top: 0px;
+  background: var(--background-25);
+  color: var(--font-color-1);
+  display: none;
+}
+
+.rtcp-vod-container .rtcp-grid-video-box:hover .rtcp-grid-video-edit{
+  display: flex;
+}
+
+.rtcp-vod-viewerpage-outercontainer .rtcp-grid-video-details .rtcp-grid-video-edit {
+  display: none !important;
+}
+
+.rtcp-grid-video-container .rtcp-grid-video-more-options {
+  height: 24px;
+  width: 24px;
+  background: var(--background-25);
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  border-radius: 50%;
+  color: var(--font-color-1);
+  font-size: 18px;
+}
+
+.rtcpmediaplayerdiv .rtcp-mp-chapter-container {
+  display: none !important;
+}
+
+/** Theme switcher **/
+.rtcp-vod-theme-switcher {
+  width: 32px;
+  height: 32px;
+  
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--background-17);
+  box-shadow: var(--box-shadow-1);
+}
+
+.rtcp-vod-theme-switcher::before {
+  content: '\e928';
+  font-size: 20px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'zchat';
+  /* box-shadow: var(--box-shadow-2); */
+}
+
+.night-mode .rtcp-vod-theme-switcher:before {
+  content: '\e929';
+}
+
+/** Pages **/
+
+.rtcp-vod-pagination {
+    gap: 10px;
+    /* padding: 12px 2px 0; */
+    padding: 0px 0px 17px;
+}
+
+.rtcp-vod-page-navigation-cont {
+    display: flex;
+    gap: 10px;
+}
+
+.rtcp-vod-pages {
+  gap: 10px;
+  /* width: 430px; */
+}
+
+.rtcp-vod-page, .rtcp-vod-page-navigator {
+    height: 35px;
+    width: 35px;
+    background: var(--background-24);
+    border-radius: 50%;
+    cursor: pointer;
+    /* box-shadow: var(--box-shadow-6); */
+    /* border: 1px solid var(--border-color-8); */
+    color: var(--font-color-1);
+}
+
+.rtcp-vod-page-navigator.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.rtcp-vod-page.active, .rtcp-vod-page:hover, 
+.rtcp-vod-page-navigator:hover, .rtcp-vod-skip-to-page-go:hover {
+  /* background: #616170; */
+  background: var(--background-30);
+  color: var(--font-color-17);
+}
+
+.rtcp-vod-page-ellipsis {
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+}
+
+.rtcp-vod-skip-to-page {
+  position: relative;
+  left: 68px;
+  gap: 10px;
+}
+
+.rtcp-vod-skip-to-page-input input {
+  width: 35px;
+  height: 35px;
+  /* background: #3b3b43; */
+  background: var(--background-24);
+  box-shadow: var(--box-shadow-6);
+  border: 1px solid var(--border-color-8);
+  outline: none;
+  padding: 4px 8px;
+  /* border: none; */
+  border-radius: 5px;
+  text-align: center;
+  color: var(--font-color-1);
+}
+
+.rtcp-vod-skip-to-page-go {
+  height: 35px;
+  width: 35px;
+  /* background: #3b3b43; */
+  background: var(--background-24);
+  border-radius: 18px;
+  cursor: pointer;
+  box-shadow: var(--box-shadow-6);
+  border: 1px solid var(--border-color-8);
+}
+
+/*** Page size selector ***/
+.rtcp-vod-page-size-selector-dropdown-cont {
+  height: 32px;
+  gap: 10px;
+  position: absolute !important;
+  top: 15px !important;
+  right: 30px;
+}
+
+/* .rtcp-grid-video-items-header > * {
+    position: relative;
+    top: 3px;
+} */
+
+.rtcp-grid-video-items-header .header-stack{
+    position: absolute;
+    height: 100%;
+    width: 360px;
+    filter: drop-shadow(4px 0 6px rgba(0,0,0,0.15));
+    top: 0px;
+    left: 0px;
+}
+
+.header-stack .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 100%, 0 100%);
+}
+
+.header-stack .layer-3 {
+    /* background: #c7d2fe; */
+    background: var(--background-46);
+    z-index: 0;
+    width: 300px;
+}
+
+.header-stack .layer-2 {
+  background: var(--background-45);
+  z-index: 2;
+  width: 250px;
+}
+
+.header-stack .layer-1 {
+  z-index: 3;
+  width: 200px;
+  background: var(--background-44);
+}
+
+.rtcp-grid-video-items[category="processing"] .rtcp-grid-vod-main-options,
+.rtcp-grid-video-items[category="uploading"] .rtcp-grid-vod-main-options,
+.rtcp-vod-viewerpage-outercontainer .rtcp-grid-vod-main-options {
+  display: none;
+  pointer-events: none;
+}
+
+.rtcp-vod-page-size-selector {
+  background: var(--background-25);
+  /* box-shadow: var(--box-shadow-9); */
+  border : 1px solid var(--background-14);
+  position: relative;
+  padding: 8px 8px 8px 13px;
+  gap: 7px;
+  border-radius: 12px;
+  height: 100%;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.rtcp-vod-page-size-selector:hover, .rtcp-vod-page-size-selector.active, 
+.rtcp-vod-page-size-selector:hover .rtcp-vod-page-size-dropdown-icon,
+.rtcp-vod-page-size-selector.active .rtcp-vod-page-size-dropdown-icon {
+  background: var(--background-26);
+  color: var(--font-color-17);
+}
+
+.rtcp-vod-page-size-selector-dropdown {
+  position: absolute;
+  height: 100%;
+  border-radius: 5px;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-evenly; */
+  z-index: 3;
+  right: 0;
+}
+
+.rtcp-vod-page-size-selector-dropdown-title, .rtcp-vod-page-size {
+    font-size: 14px;
+    /* font-weight: 500; */
+    position: relative;
+}
+
+.rtcp-vod-page-size-dropdown-icon {
+    background: var(--background-25);
+    color: var(--font-color-16);
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+}
+
+.rtcp-vod-page-size-opts {
+    position: absolute;
+    background: var(--background-1);
+    box-shadow: var(--box-shadow-5);
+    border-radius: 12px;
+    padding: 8px 5px;
+    right: 0px;
+    gap: 8px;
+}
+
+.rtcp-vod-size-opt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 33px;
+    height: 33px;
+    cursor: pointer;
+}
+
+.rtcp-vod-size-opt:hover {
+    background: var(--background-27);
+}
+
+.rtcp-vod-size-opt:after {
+    content: "";
+    height: 19px;
+    width: 1px;
+    background: var(--background-28);
+    position: relative;
+    left: 13px;
+}
+
+.rtcp-vod-size-opt:last-of-type:after {
+    content: unset;
+}
+
+/** Category panel loader **/
+
+.rtcp-vod-category-skeleton {width: 100%;}
+
+.rtcp-vod-category-skeleton-header {
+    margin-top: 16px;
+    background: var(--background-32);
+    padding: 10px 8px;
+    border-radius: 6px;
+    height: 65px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--border-color-9);
+}
+
+.rtcp-vod-category-skeleton-title {
+    width: 295px;
+    height: 35px;
+    margin-top: 2px;
+    border-radius: 5px;
+    margin-left: 4px;
+}
+
+.rtcp-vod-category-skeleton-contents {
+    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(259px, 1fr));
+    display: grid;
+    padding: 20px 2px;
+    align-content: baseline;
+    border: 2px solid var(--border-color-10);
+    padding: 20px 15px;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.rtcp-vod-category-skeleton-video-box {
+  /* border-radius: 10px; */
+  /* border: 1px solid var(--border-color-2); */
+  position: relative;
+  width: 100%;
+}
+
+.rtcp-vod-viewerpage-nextvideos-list .rtcp-vod-category-skeleton-video-box{
+  padding: 8px 16px;
+}
+
+.rtcp-vod-category-skeleton-wrapper {
+  border: 1px solid var(--border-color-2);
+  border-radius: 10px;
+  width: 100%;
+  height: 180px;
+}
+
+.rtcp-vod-category-skeleton-img {
+    height: 112px;
+    border-radius: 6px 6px 0px 0px;
+    overflow: hidden;
+}
+
+.rtcp-vod-category-skeleton-footer {
+    padding: 12px;
+    background: var(--background-2);
+    border-radius: 0 0 9px 9px;
+    width: 100%;
+    padding-top: 10px;
+    height: 66px;
+}
+
+.rtcp-vod-category-skeleton-footer-title {
+    width: 160px;
+    height: 20px;
+    border-radius: 5px;
+}
+
+.rtcp-vod-category-skeleton-bottom-line {
+    height: 10px;
+    width: 100%;
+    border-radius: 6px;
+    background: var(--background-19);
+    border-bottom: 4px solid var(--border-color-7);
+}
+
+.rtcp-vod-category-skeleton-footer-info {
+    width: 220px;
+    height: 15px;
+    margin-top: 6px;
+    border-radius: 5px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -348px;
+    }
+    100% {
+        background-position: 148px;
+    }
+}
+
+.skeleton {
+    /* background: linear-gradient(90deg, #4d4c4c 6%, #211b1b 70%, #6d6b6b 117%); */
+    /* background: linear-gradient(90deg, #312f2f 6%, #3e3c3f 70%, #2b2727 117%); */
+    background : var(--background-36);
+    background-size: 500px 110%;
+    animation: shimmer 1s infinite;
+}
+
+/** No records sec **/
+
+.rtcp-vod-home-no-data-sec {height: 100%; position: relative;}
+
+.rtcp-vod-home-no-data-icon {
+    font-size: 18px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    color: var(--font-color-19);
+    font-style: italic;
+}
+
+/** Scroll bar **/
+.scroll {
+    scrollbar-width: thin;
+    scrollbar-color : var(--scrollbar-color-1);
+    /* scrollbar-color: #555 #171216; */
+}
+
+/** toggle dark theme **/
+
+.rtcp-demo-vod-icon-moon:before{
+  content: '\e928';
+  font-size: 20px;
+}
+
+.rtcp-demo-vod-icon-sun:before{
+  content: '\e929';
+  font-size: 22px;
+}
+
+.theme-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-tertiary);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 48px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: var(--border-color);
+    transition: var(--transition);
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    transition: var(--transition);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/** video box wave icon **/
+
+.rtcp-vod-video-box-wave-icon {
+  display: none;
+}
+
+.rtcp-vod-viewerpage-outercontainer .rtcp-vod-video-box-wave-icon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 35px;
+    height: 35px;
+    /* background: #2d2d32bd; */
+    background-color: #00000085;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+.rtcp-vod-video-box-wave-icon .wave-bar:nth-child(1) {
+  height: 40%;
+  animation-delay: 0s;
+}
+
+.rtcp-vod-video-box-wave-icon .wave-bar:nth-child(2) {
+  height: 80%;
+  animation-delay: 0.2s;
+}
+
+.rtcp-vod-video-box-wave-icon .wave-bar:nth-child(3) {
+  height: 60%;
+  animation-delay: 0.4s;
+}
+
+.wave-bar:nth-child(4) {
+  height: 90%;
+  animation-delay: 0.6s;
+}
+
+.rtcp-vod-video-box-wave-icon .wave-bars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 14px;
+}
+
+.rtcp-vod-video-box-wave-icon .wave-bar {
+  width: 2px;
+  /* background: #bfd7aa; */
+  background-color: #f1e9bc;
+  border-radius: 2px;
+  animation: wave 0.8s
+  ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+  transform: scaleY(1);
+  }
+
+  50% {
+  transform: scaleY(0.3);
+  }
+}
+
+/*** Zoho Celebrations Banner ***/
+
+.rtcp-vod-zoho-celebrations {
+    padding: 20px;
+    position: relative;
+    display: none;
+}
+
+.rtcp-vod-zc .rtcp-vod-zoho-celebrations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating geometric shapes */
+.geometric-shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    /* box-shadow: 
+        0 8px 32px rgba(96, 125, 139, 0.15),
+        inset 0 0 40px rgba(255, 255, 255, 0.2); */
+      box-shadow: 
+        0 0px 15px rgba(96, 125, 139, 0.15), 
+        inset 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Diamonds */
+.diamond-1, .diamond-2 {
+    width: 35px;
+    height: 35px;
+    transform: rotate(45deg);
+}
+
+.diamond-1 {
+    top: 25%;
+    right: 18%;
+    animation: float-diamond-1 9s ease-in-out infinite;
+}
+
+.diamond-2 {
+    bottom: 15%;
+    left: 20%;
+    animation: float-diamond-2 11s ease-in-out infinite;
+}
+
+/* Circles */
+.circle-1, .circle-2 {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    bottom: 30%;
+    right: 8%;
+    animation: float-circle-1 10s ease-in-out infinite;
+}
+
+.circle-2 {
+  left : 30%;
+  animation: float-circle-2 10s ease-in-out infinite;
+}
+
+@keyframes float-diamond-1 {
+    0%, 100% {
+        transform: rotate(45deg) translate(0, 0) scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: rotate(225deg) translate(35px, -25px) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+@keyframes float-diamond-2 {
+    0%, 100% {
+        transform: rotate(45deg) translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: rotate(225deg) translate(-40px, 30px) scale(1.15);
+        opacity: 0.8;
+    }
+}
+
+@keyframes float-circle-1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-35px, -40px) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+@keyframes float-circle-2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(35px, 40px) scale(1.2);
+        opacity: 0.8;
+    }
+}
