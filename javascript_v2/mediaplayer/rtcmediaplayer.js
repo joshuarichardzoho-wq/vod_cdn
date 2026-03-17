@@ -2539,6 +2539,7 @@ RTCMediaPlayerObj.prototype.bindVideoOnHover = function () {
 			return;
 		}
 
+		console.log("mouseleave")
 		elem.removeClass("rtcp-mp-videoHover")
 	})
 }
@@ -6881,6 +6882,7 @@ RTCMediaPlayerObj.prototype.hidePlayerControls = function()
 		return;
 	}
 
+	console.log("hidePlayerControls called");
 	elem.removeClass("rtcp-mp-videoHover");
 }
 
