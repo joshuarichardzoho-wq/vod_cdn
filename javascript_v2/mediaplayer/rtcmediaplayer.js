@@ -1014,6 +1014,7 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').addClass('dN');
 							},
 							(failure) => {
+								console.log("Autoplay failed _start", failure);
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').removeClass('dN');
 //								$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 								this.setSpinner();
@@ -1027,6 +1028,7 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 								}
 								this.UIonPause();
 								$('#'+this.mediaPlayerDiv+' [rtcpmpbutton][purpose="play"]').attr("purpose","autoplaystart");
+								console.log("Autoplay failed _end", failure);
 							});
 				}
 				else
@@ -2519,8 +2521,6 @@ RTCMediaPlayerObj.prototype.bindVideoOnHover = function () {
 		}
 		mediaPlayerInstance.showPlayerControls();
 		mediaPlayerInstance.hoverTimerId = setTimeout(function (mediaPlayerInstance) {
-        
-			console.log('1')
 			mediaPlayerInstance.hidePlayerControls();
 		}, 4000, mediaPlayerInstance)
 	})
@@ -2541,7 +2541,6 @@ RTCMediaPlayerObj.prototype.bindVideoOnHover = function () {
 			return;
 		}
 
-		console.log("mouseleave")
 		elem.removeClass("rtcp-mp-videoHover")
 	})
 }
@@ -2846,7 +2845,7 @@ RTCMediaPlayerObj.prototype.bindVideoTagDurationEvent = function ()
 		{
 			$('[mediaplayerid="' + this.mediaPlayerDiv + '"] .rtcp-mp-time-duration').html(this.getFormatedTime(this._videoInstance.duration));
 		}
-		console.log('', 'durationchange event called');
+		
 		this.bindDurationAndEvents();
 	}.bind(this)
 	
@@ -3118,7 +3117,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 			this.isInitialised = true
 			this.showPlayerControls();
 			$('#' + this.mediaPlayerDiv + ' .rtcp-mp-volume-slider-handle').css("left", this._videoInstance.volume * (70 - 12));
-			console.log('2')
+			
 			this.hidePlayerControls();
 		}
 		return;
@@ -3138,7 +3137,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 				this.getEventsObj().sortTimeIndexList(this);
 			}
 			this.appendContainerHtml();
-			console.log('3')
+			
 			this.hidePlayerControls();
 			return;
 		}
@@ -3150,7 +3149,6 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 			//$('#' + this.mediaPlayerDiv + ' .rtcp-mp-chapter-container, #' + this.mediaPlayerDiv + ' .rtcp-mp-chapter-button').css("display", "none");
 			$('#' + this.mediaPlayerDiv + ' .rtcmediaplayerchapter').attr("et", this._videoInstance.duration);
 			this.appendContainerHtml();
-			console.log('4')
 			this.hidePlayerControls();
 			return;
 		}
@@ -3158,7 +3156,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 	}
 	if (!this.getDuration() && this.isEventsLoaded) 
 	{
-		console.log('Duration is set for the first time and events are loaded');
+		console.log('bindDurationAndEvents _start');
 		this.showPlayerControls();
 		//$('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider-handle').css("left", this._videoInstance.volume * ($('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider').width() - $('#' +this.mediaPlayerDiv +' .rtcp-mp-volume-slider-handle').width()));
 		$('#' + this.mediaPlayerDiv + ' .rtcp-mp-volume-slider-handle').css("left", this._videoInstance.volume * (70 - 12));
@@ -3186,7 +3184,7 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 				this.showAnnotation(RTCMediaPlayerConstants.category.BOOKMARKS, true);
 			}
 		}
-		console.log('5')
+		console.log('bindDurationAndEvents _end');
 		this.hidePlayerControls();
 		return;
 	}
@@ -3204,7 +3202,6 @@ RTCMediaPlayerObj.prototype.bindDurationAndEvents = function ()
 			$('#' + this.mediaPlayerDiv + ' .rtcp-mp-setting-mainview .rtc-mp-bookmark-setting').addClass('rtcp-mp-bookmark-active');
 			this.showAnnotation(RTCMediaPlayerConstants.category.BOOKMARKS, true);
 		}
-		console.log('6')
 		this.hidePlayerControls();
 	}
 }
@@ -6699,6 +6696,7 @@ RTCMediaPlayerObj.prototype.setSpinner = function()
 
 RTCMediaPlayerObj.prototype.UIonPause= function()
 {
+	console.log("UI on pause");
 	if(this._videoInstance && this._videoInstance.ended)
 	{
 		$('[mediaplayerid="' + this.mediaPlayerDiv +'"] .rtcmediaplayecontrols .rtcp-mp-playpause-button[rtcpmpbutton]').find('.rtcp-mp-button').removeClass("rtcmp-icon-mp-pause").addClass("rtcmp-icon-mp-replay");
