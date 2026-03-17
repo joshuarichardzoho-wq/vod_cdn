@@ -996,10 +996,12 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 
 				if(this._config.autoplay == "enable")
 				{
+					console.log("Trying to play the video");
 //					$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').show();
 					this.setSpinner();
 					this._videoInstance.play().then(
 							(success) => {
+								console.log("Video play started successfully");
 //								$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
 								this.setSpinner();
 								$('#' + this.mediaPlayerDiv + ' .rtcmediaplayervideo').css("object-fit","contain");
@@ -1016,6 +1018,7 @@ RTCMediaPlayerObj.prototype.loadHls = function (isHls)
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').addClass('dN');
 							},
 							(failure) => {
+								console.log("Video play failed", failure);
 								console.log("1", this._videoInstance.paused)
 								$('#' + this.mediaPlayerDiv + ' .rtcp-mp-video-pause-state').removeClass('dN');
 //								$('#' + this.mediaPlayerDiv +' .rtcp-mp-spinner').hide();
