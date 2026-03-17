@@ -5962,6 +5962,7 @@ RTCMediaPlayerObj.prototype.getCurrentTimefromFragment = function ()
 
 RTCMediaPlayerObj.prototype.updateCenterBezel= function (purpose) 
 {
+	console.log("updateCenterBezel called with purpose: "+purpose);
 	if(!purpose)
 	{
 		return;
