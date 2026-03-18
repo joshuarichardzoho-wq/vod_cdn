@@ -2837,6 +2837,7 @@ vodDemo =
                 bindCustomEvents ()
                 {
                     vodPlayer.find('.vod-player-spinner-center').remove();
+                    this.setSpinner();
                     vodStudio.displayChapters();
 
                     const videoElem = this._videoInstance;
