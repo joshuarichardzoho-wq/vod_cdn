@@ -2835,17 +2835,21 @@ vodDemo =
             const customEvents = 
             {
                 bindCustomEvents ()
-                {   
-                    vodStudio.displayChapters();
-
+                {
                     const videoElem = this._videoInstance;
 
-                    const removeLSSpinner = () => {
-                        vodPlayer.find('.vod-player-spinner-center').remove();
-                        videoElem.removeEventListener('loadeddata', removeLSSpinner);
-                    };
+                    const removeLSSpinner = () => vodPlayer.find('.vod-player-spinner-center').remove();
 
-                    videoElem.addEventListener('loadeddata', removeLSSpinner);
+                    if(videoElem.readyState >= 2)
+                    {
+                        removeLSSpinner();
+                    }
+                    else
+                    {
+                        videoElem.addEventListener('loadeddata', removeLSSpinner, { once: true });
+                    }
+
+                    vodStudio.displayChapters();
 
                     const loadedMetadatahandler = () =>
                     {
@@ -2885,7 +2889,6 @@ vodDemo =
             }
 
             //vodPlayer.removeClass('rtcpmediaplayerdiv').children().remove();
-            console.log('open viewer page Initializing VOD Player');
             vodStudio.initVodPlayer(playerId, undefined, customEvents);
         }
 
