@@ -2835,12 +2835,17 @@ vodDemo =
             const customEvents = 
             {
                 bindCustomEvents ()
-                {
-                    vodPlayer.find('.vod-player-spinner-center').remove();
-                    this.setSpinner();
+                {   
                     vodStudio.displayChapters();
 
                     const videoElem = this._videoInstance;
+
+                    const removeLSSpinner = () => {
+                        vodPlayer.find('.vod-player-spinner-center').remove();
+                        videoElem.removeEventListener('onloadeddata', removeLSSpinner);
+                    };
+                    
+                    videoElem.addEventListener('onloadeddata', removeLSSpinner);
 
                     const loadedMetadatahandler = () =>
                     {
