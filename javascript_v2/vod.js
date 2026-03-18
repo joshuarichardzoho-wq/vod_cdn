@@ -2842,10 +2842,10 @@ vodDemo =
 
                     const removeLSSpinner = () => {
                         vodPlayer.find('.vod-player-spinner-center').remove();
-                        videoElem.removeEventListener('onloadeddata', removeLSSpinner);
+                        videoElem.removeEventListener('loadeddata', removeLSSpinner);
                     };
-                    
-                    videoElem.addEventListener('onloadeddata', removeLSSpinner);
+
+                    videoElem.addEventListener('loadeddata', removeLSSpinner);
 
                     const loadedMetadatahandler = () =>
                     {
