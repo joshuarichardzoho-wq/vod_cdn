@@ -1,4 +1,5 @@
 /*$Id$*/
+/* //testing */
 * { box-sizing:border-box;}
 html { height: 100%;}
 body{ margin: 0 auto; height: 100%; overflow: hidden;}
@@ -23,11 +24,11 @@ textarea:focus-visible {
 
 @font-face {
   font-family: 'zchat';
-  src:  url('../../styles_v2/fonts/landingpage/vod/vod.eot');
-  src:  url('../../styles_v2/fonts/landingpage/vod/vod.eot') format('embedded-opentype'),
-    url('../../styles_v2/fonts/landingpage/vod/vod.ttf') format('truetype'),
-    url('../../styles_v2/fonts/landingpage/vod/vod.woff') format('woff'),
-    url('../../styles_v2/fonts/landingpage/vod/vod.svg') format('svg');
+  src:  url('https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@main/style_v2/fonts/landingpage/vod/vod.eot');
+  src:  url('https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@main/style_v2/fonts/landingpage/vod/vod.eot') format('embedded-opentype'),
+    url('https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@main/style_v2/fonts/landingpage/vod/vod.ttf') format('truetype'),
+    url('https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@main/style_v2/fonts/landingpage/vod/vod.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/joshuarichardzoho-wq/vod_cdn@main/style_v2/fonts/landingpage/vod/vod.svg') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
