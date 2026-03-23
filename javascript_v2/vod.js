@@ -838,11 +838,12 @@ vodDemo =
             const file = ((event.dataTransfer instanceof DataTransfer) ? event.dataTransfer : event.target).files[0];
             const name = file.name.trim();
             const dotIndex = name.lastIndexOf('.');
-            const tempTitle = (dotIndex > 0) ? name.slice(0, dotIndex) : name;
+            const tempTitle = (dotIndex > 0) ? name.slice(0, dotIndex) : name; // removing extension from title
+            //const tempTitle = `RTCP_VOD_Sample_${date}_${time}`.slice(0, vodDemo.getContentConfig('length', 'title'));
             const url = URL.createObjectURL(file);
             const uploadTime = Date.now();
             const {date, time} = vodDemo.getDateTime(uploadTime);
-            //const tempTitle = `RTCP_VOD_Sample_${date}_${time}`.slice(0, vodDemo.getContentConfig('length', 'title'));
+
             const videoInfo = 
             {
                 ...data,
@@ -902,15 +903,15 @@ vodDemo =
         {
             const opts = [];
 
-            if(session.isCurrentUser(content.owner))
-            {
-                opts.push('edit');
-                opts.push((content.status === vodDemoConstant.status.UPLOADING) ? 'cancel' : 'delete');
-            }
+                if(session.isCurrentUser(content.owner))
+                {
+                    opts.push('edit');
+                    opts.push((content.status === vodDemoConstant.status.UPLOADING) ? 'cancel' : 'delete');
+                }
 
-            if((content.status === vodDemoConstant.status.COMPLETED))
+                if((content.status === vodDemoConstant.status.COMPLETED))
             {
-               opts.push('view');
+                opts.push('view');
             }
 
             return opts;
@@ -1218,47 +1219,51 @@ vodDemo =
                 value = value+`<span>${value > 1 ? 'views' : 'view'}</span>`
             }
 
-            gridVideoBox.find('.rtcp-grid-video-'+key).text(value);
+            gridVideoBox.find('.rtcp-grid-video-'+key).text(value); // avoiding .html for processXSS 
         }
 
         gridVideoBox.attr('id', id);
 
         const imgCont = gridVideoBox.find('.rtcp-grid-video-img-container');
-        var updateMoreOpt = false;
+        //var updateMoreOpt = false; // same user, same status, different contentID, but mainOption has different icon, then it should update but here we didn't update
 
         if(canUpdate('status'))
         {
             vodDemo.changeGridVideoStatus(gridVideoBox, newInfo.status);
-            updateMoreOpt = true;
+            //updateMoreOpt = true; // same user, same status, different contentID, but mainOption has different icon, then it should update but here we didn't update
         }
-
-        const info = session.getVodContent(id);
 
         if(canUpdate('owner'))
         {
             imgCont.find('.rtcp-grid-video-owner-profile img').attr('src', session.getUserImage(newInfo.owner));
             imgCont.find('.rtcp-grid-video-ownername').text(newInfo.ownerDisplayName);
 
-            if(!updateMoreOpt)
-            {
-                newInfo.status = info.status;
-                updateMoreOpt = true;
-            }
+            // if(!updateMoreOpt) // same user, same status, different contentID, but mainOption has different icon, then it should update but here we didn't update
+            // {
+            //     // updateMoreOpt = true; // same user, same status, different contentID, but mainOption has different icon, then it should update but here we didn't update
+            // }
         }
 
-        if(!updateMoreOpt)
-        {
-            return;
-        }
+        // if(!updateMoreOpt) // same user, same status, different contentID, but mainOption has different icon, then it should update but here we didn't update
+        // {
+        //     return;
+        // }
 
         if($('#rtcp-vod-studio-more-opt').parent().attr('id') == id)
         {
             vodDemoUtils.clickOutside.close();
         }
 
+        const info = session.getVodContent(id);
+        
         if(typeof newInfo.owner === 'undefined')
         {
             newInfo.owner = info.owner;
+        }
+
+        if(typeof newInfo.status === 'undefined') // updateGridVideoContainerOpts needs status and owner
+        {
+            newInfo.status = info.status;
         }
 
         this.updateGridVideoContainerOpts(gridVideoBox, session, newInfo);
@@ -2752,6 +2757,12 @@ vodDemo =
             const likeBtn = descCont.find('.rtcp-vod-like-btn');
             (likeBtn.attr('status') === 'liked') && vodDemoHandler.UI.toggleLikeStatus(likeBtn);
 
+            //reset comment box state when navigating to a different content from viewer page
+            const selfCommentBox = commentBox.find('.rtcp-self-commenter-box-input-sec');
+            selfCommentBox.text('').removeAttr('contenteditable').trigger('input');
+            commentBox.find('.rtcp-self-commenter-box').removeClass('active');
+            commentSec.find('#rtcp-vod-self-comment-actions').addClass('dN');
+
             viewerPage.find('.rtcp-vod-video-container').attr('id', playerId);
             viewerPage.attr('contentid', contentId);
         }
@@ -2761,9 +2772,9 @@ vodDemo =
         const descriptionCont = wrapper.find('.rtcp-vod-video-desc');
         const descriptionReadMore = descriptionCont.find('.rtcp-vod-video-desc-read-more');
         const hasReadMore = (descriptionReadMore.length > 0);
-        const description = (content.description || '').slice(0, maxDescLen);
+        const description = (content.description || '').slice(0, maxDescLen); // slice description to max length allowed in viewer
 
-        descriptionCont.text(description);
+        descriptionCont.text(description); // avoiding .html() to prevent XSS as description is user generated content
 
         if(description.length > maxDescLen)
         {
@@ -2822,12 +2833,12 @@ vodDemo =
         }
 
         const vodPlayer = viewerPage.find('#'+playerId).addClass('rtcpmediaplayerdiv');
-        vodPlayer.empty();
-
-        const spinner = this.getPlayerSpinner().addClass('vod-player-spinner-center');
-        vodPlayer.append(spinner);
-
+        const spinner = this.getPlayerSpinner().addClass('vod-player-spinner-center'); // to differentiate spinner in viewer page and media player
         const viewerLHS = viewerPage.find('.rtcp-vod-viewerpage-lhs');
+        
+        vodPlayer.empty();
+        vodPlayer.append(spinner);
+        
         $(window).off('.vod_viewer');
        
         const playerSuccessCB = (studio) =>
@@ -2840,13 +2851,13 @@ vodDemo =
 
                     const removeLSSpinner = () => vodPlayer.find('.vod-player-spinner-center').remove();
 
-                    if(videoElem.readyState >= 2)
+                    if(videoElem.readyState >= 2) // checking if video has loaded enough data to play before removing spinner, if yes remove spinner immediately else wait for loadeddata event. this is incase loadeddata event has already fired before bindCustomEvents is called which can happen if video is cached or loads very fast
                     {
                         removeLSSpinner();
                     }
                     else
                     {
-                        videoElem.addEventListener('loadeddata', removeLSSpinner, { once: true });
+                        videoElem.addEventListener('loadeddata', removeLSSpinner, { once: true }); // using loadeddata event to remove spinner as it is fired in both cases when video is loaded for first time or loaded from cache, and it is fired after loadedmetadata event which is used to get video dimensions for resizing player, so it ensures that player is resized before spinner is removed
                     }
 
                     vodStudio.displayChapters();

@@ -622,7 +622,7 @@ var vodDemoHandler =
         startCommentEdit : function(elem, event)
         {
             const editable = elem.find('.rtcp-self-commenter-box-input-sec');
-            const text = editable.text();
+            const getTextLength = () => editable.text().trim().length; // trimming the text to avoid counting extra spaces as characters which can lead to wrong enabling/disabling of post comment button
 
             if(elem.hasClass('active'))
             {
@@ -630,13 +630,20 @@ var vodDemoHandler =
             }
 
             editable.attr('contenteditable', true);
+            editable.focus();
 
             vodDemoUtils.resetCursorPosition(editable.get(0), undefined, true);
 
             const parent = elem.closest('.rtcp-vod-comment-sec');
             const actions = parent.find('#rtcp-vod-self-comment-actions').removeClass('dN');
+
+            editable.off('.selfCommentState'); // removing any existing event handlers with the same namespace to avoid multiple handlers getting attached which can happen when user clicks on edit comment multiple times without posting or cancelling the previous comment  
+            editable.on('input.selfCommentState keyup.selfCommentState paste.selfCommentState', function ()
+            {
+                parent.toggleClass('btn-inactive', getTextLength() === 0);
+            });
             
-            parent.toggleClass('btn-inactive', !(text.length > 0));
+            parent.toggleClass('btn-inactive', getTextLength() === 0);
             elem.addClass('active');
 
             vodDemoUtils.clickOutside.bind(
@@ -649,7 +656,8 @@ var vodDemoHandler =
                 }, 
                 onClose : () =>
                 {
-                    elem.removeClass('active').off('mousedown')
+                    editable.off('.selfCommentState');
+                    elem.removeClass('active').off('mousedown');
                     editable.blur().removeAttr('contenteditable');
                 }
             });
@@ -733,12 +741,11 @@ var vodDemoHandler =
 
         cancelComment : function(elem, event)
         {
-            const actionBtnCont = elem.parent();
-            const parent = actionBtnCont.closest('.rtcp-vod-comment-sec');
-            
-            parent.find('.rtcp-self-commenter-box-input-sec').text('').blur().removeAttr('contenteditable');
-            parent.find('.rtcp-self-commenter-box').removeClass('active').off('mousedown');
-            actionBtnCont.remove();
+            const parent = elem.closest('.rtcp-vod-comment-sec');
+            const input = parent.find('.rtcp-self-commenter-box-input-sec');
+
+            input.text('').trigger('input'); 
+            vodDemoHandler.UI.handleClickOnVodDemo(elem, event);
         },
 
         replyComment : function(elem, event)
@@ -805,7 +812,7 @@ var vodDemoHandler =
         handleVODStatus : function(msgObj)
         {
             const session = vodDemo.getVodDemoSession();
-            const info = session.getVodContent(msgObj.uploadId);
+            const info = session.getVodContent(msgObj.uploadId); // always return object
             const category = vodDemoConstant.getCategoryGroup(vodDemoConstant.categoryConstants[msgObj.status]);
             const sorter = vodDemo.getUserVodCategoryIdSorter();
             

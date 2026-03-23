@@ -184,6 +184,9 @@ class ZRVODViewer
         {
             const chapter = chaptersList[id];
 
+            chapter.title = $RTCPWC.$CUtil.processXSS(chapter.title); // Sanitize chapter title to prevent XSS attacks
+            chapter.description = $RTCPWC.$CUtil.processXSS(chapter.description); // Sanitize chapter description to prevent XSS attacks
+
             data.push({
                 "module": "Chapter",
                 "eventid": id,
@@ -272,7 +275,6 @@ class ZRVODViewer
 
     initVodPlayer (playerDivId, playerConfig = {}, customPlayerEvents = {})
     {
-        console.log("Initializing VOD Player");
         if(typeof playerDivId !== 'string' || !playerDivId.trim()) // " " not valid 
         {
             return;
@@ -314,7 +316,6 @@ class ZRVODViewer
         {
             Object.assign(config, this._mediaPlayerObj.configs);
             mediaPlayer.setPlayerConfig(config);
-            console.log("playerCallback");
             mediaPlayer.playContent(this._contentKey, this._pbToken, this._wssUrl, this._userId);
         }
 
